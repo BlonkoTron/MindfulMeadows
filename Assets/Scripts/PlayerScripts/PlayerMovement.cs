@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpForce;
     [SerializeField] private float rotationSpeed;
     public bool isGrounded = false;
+    public bool canJump = true;
     public bool canMove = true;
 
     #endregion
@@ -40,7 +41,10 @@ public class PlayerMovement : MonoBehaviour
 
     // Update is called once per frame
     void FixedUpdate()
-    {
+    {   
+
+
+
         #region Movement
 
         if (movement != null)
@@ -67,6 +71,11 @@ public class PlayerMovement : MonoBehaviour
             movement = input.Get<Vector3>();
             movement = Quaternion.AngleAxis(cameraTransform.rotation.eulerAngles.y, Vector3.up) * movement;
         }
+        else
+        {
+            movement = Vector3.zero;
+        }
+
     }
 
     void OnJump(InputValue input)
