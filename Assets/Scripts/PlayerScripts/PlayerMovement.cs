@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpForce;
     [SerializeField] private float rotationSpeed;
     public bool isGrounded = false;
+    public bool canMove = true;
 
     #endregion
 
@@ -60,17 +61,17 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void OnMovement(InputValue input)
-    {
-        movement = input.Get<Vector3>();
-        movement = Quaternion.AngleAxis(cameraTransform.rotation.eulerAngles.y, Vector3.up) * movement;
-
-
-
+    {   
+        if (canMove)
+        {
+            movement = input.Get<Vector3>();
+            movement = Quaternion.AngleAxis(cameraTransform.rotation.eulerAngles.y, Vector3.up) * movement;
+        }
     }
 
     void OnJump(InputValue input)
     {   
-        if (isGrounded)
+        if (isGrounded && canMove)
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
