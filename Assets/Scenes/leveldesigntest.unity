@@ -3067,7 +3067,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 403766209042046135, guid: adc6a327fcf481e4cbf0feb14f51ad9a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 403766209042046135, guid: adc6a327fcf481e4cbf0feb14f51ad9a, type: 3}
+      propertyPath: m_TagString
+      value: dialogbox
+      objectReference: {fileID: 0}
+    - target: {fileID: 3323286089861764443, guid: adc6a327fcf481e4cbf0feb14f51ad9a, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5906270333291692908, guid: adc6a327fcf481e4cbf0feb14f51ad9a, type: 3}
       propertyPath: m_Pivot.x

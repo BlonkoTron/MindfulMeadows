@@ -14,7 +14,7 @@ public class PlayerInteract : MonoBehaviour
         if (canTalk)
         {
             if (npcDialog != null)
-            {
+            {   
                 npcDialog.Talk();
             }
         }
@@ -26,7 +26,7 @@ public class PlayerInteract : MonoBehaviour
         if (trigger.gameObject.CompareTag("Interactable"))
         {   
 
-            PlayerMovement.instance.canMove = false;
+            PlayerMovement.instance.canJump = false;
 
             npcDialog = trigger.GetComponent<Dialog>();
 
@@ -42,7 +42,7 @@ public class PlayerInteract : MonoBehaviour
     {
         if (trigger.gameObject.CompareTag("Interactable"))
         {
-            PlayerMovement.instance.canMove = true;
+            PlayerMovement.instance.canJump = true;
 
             canTalk = false;
         }

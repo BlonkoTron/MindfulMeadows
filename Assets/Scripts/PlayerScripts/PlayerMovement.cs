@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpForce;
     [SerializeField] private float rotationSpeed;
     public bool isGrounded = false;
+    public bool canJump = true;
     public bool canMove = true;
 
     #endregion

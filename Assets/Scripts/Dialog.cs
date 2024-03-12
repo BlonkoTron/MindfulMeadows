@@ -6,16 +6,20 @@ public class Dialog : MonoBehaviour
 {
     [Multiline]
     [SerializeField] private protected string[] dialogTexts;
-    [SerializeField] private protected DialogBox txtBox;
+    private protected DialogBox txtBox;
     private protected int currentDialogIndex;
     private protected static bool isTalking=false;
     public static float textSpeed=0.05f;
 
-
+    private void Start()
+    {
+        txtBox = GameObject.FindGameObjectWithTag("dialogbox").GetComponent<DialogBox>();
+    }
     public void Talk()
     {
         if (!isTalking) 
         {
+            PlayerMovement.instance.canMove = false;
             isTalking = true;
             txtBox.ToggleBox(true);
             txtBox.SetNewText(dialogTexts[0]);
@@ -39,11 +43,12 @@ public class Dialog : MonoBehaviour
             EndDialog();
         }
     }
-    private void EndDialog()
+    public virtual void EndDialog()
     {
         isTalking = false;
         txtBox.ToggleBox(false);
         currentDialogIndex = 0;
+        PlayerMovement.instance.canMove = true;
     }
 
 
