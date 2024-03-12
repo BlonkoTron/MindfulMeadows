@@ -68,8 +68,7 @@ public class PlayerMovement : MonoBehaviour
     {   
         if (canMove)
         {
-            movement = input.Get<Vector3>();
-            movement = Quaternion.AngleAxis(cameraTransform.rotation.eulerAngles.y, Vector3.up) * movement;
+            movement = Quaternion.AngleAxis(cameraTransform.rotation.eulerAngles.y, Vector3.up) * input.Get<Vector3>();
         }
         else
         {
