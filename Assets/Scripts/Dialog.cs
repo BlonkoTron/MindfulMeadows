@@ -8,7 +8,7 @@ public class Dialog : MonoBehaviour
     [SerializeField] private protected string[] dialogTexts;
     private protected DialogBox txtBox;
     private protected int currentDialogIndex;
-    private protected static bool isTalking=false;
+    public static bool isTalking=false;
     public static float textSpeed=0.05f;
 
     private void Start()
@@ -49,6 +49,7 @@ public class Dialog : MonoBehaviour
         txtBox.ToggleBox(false);
         currentDialogIndex = 0;
         PlayerMovement.instance.canMove = true;
+        
     }
 
 

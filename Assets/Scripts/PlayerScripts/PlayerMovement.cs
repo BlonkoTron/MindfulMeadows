@@ -82,7 +82,10 @@ public class PlayerMovement : MonoBehaviour
     {   
         if (isGrounded && canMove)
         {
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            if (canJump)
+            {
+                rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            }
         }
 
     }

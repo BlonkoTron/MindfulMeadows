@@ -11,7 +11,7 @@ public class PlayerInteract : MonoBehaviour
 
     void OnInteract(InputValue input)
     {
-        if (canTalk)
+        if (canTalk || Dialog.isTalking)
         {
             if (npcDialog != null)
             {   
@@ -19,7 +19,7 @@ public class PlayerInteract : MonoBehaviour
             }
         }
     }
-
+   
 
     void OnTriggerEnter(Collider trigger)
     {
