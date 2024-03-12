@@ -8,16 +8,24 @@ public class PlayerMovement : MonoBehaviour
 {
     public static PlayerMovement instance;
 
-
+    #region movement values
+    [Header("Movementstuff")]
     [SerializeField] private float speed;
     [SerializeField] private float jumpForce;
-
+    [SerializeField] private float rotationSpeed;
     public bool isGrounded = false;
 
+    #endregion
+
+    [Header("Others")]
+    [SerializeField] private Transform cameraTransform;
+
+
+    #region private stuff
     private Vector3 movement;
     private Rigidbody rb;
 
-
+    #endregion
 
     private void Awake()
     {
@@ -34,14 +42,29 @@ public class PlayerMovement : MonoBehaviour
     {
         #region Movement
 
-        transform.Translate(movement.normalized * speed * Time.fixedDeltaTime);
+        if (movement != null)
+        {
 
+            if (movement != Vector3.zero)
+            {
+                Quaternion toRoataion = Quaternion.LookRotation(movement, Vector3.up);
+
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, toRoataion, rotationSpeed * Time.fixedDeltaTime);
+            }
+
+            float magnitude = Mathf.Clamp01(movement.magnitude);
+            transform.Translate(movement.normalized * magnitude * speed * Time.fixedDeltaTime);
+
+        }
         #endregion
     }
 
     void OnMovement(InputValue input)
     {
         movement = input.Get<Vector3>();
+        movement = Quaternion.AngleAxis(cameraTransform.rotation.eulerAngles.y, Vector3.up) * movement;
+
+
 
     }
 
@@ -53,6 +76,5 @@ public class PlayerMovement : MonoBehaviour
         }
 
     }
-
 
 }
