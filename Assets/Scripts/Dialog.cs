@@ -5,10 +5,10 @@ using UnityEngine;
 public class Dialog : MonoBehaviour
 {
     [Multiline]
-    [SerializeField] private string[] dialogTexts;
-    [SerializeField] private DialogBox txtBox;
-    private int currentDialogIndex;
-    private static bool isTalking=false;
+    [SerializeField] private protected string[] dialogTexts;
+    [SerializeField] private protected DialogBox txtBox;
+    private protected int currentDialogIndex;
+    private protected static bool isTalking=false;
     public static float textSpeed=0.05f;
 
 
