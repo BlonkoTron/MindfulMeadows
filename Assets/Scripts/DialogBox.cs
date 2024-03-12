@@ -6,11 +6,14 @@ using TMPro;
 public class DialogBox : MonoBehaviour
 {
     [SerializeField] private TMP_Text myTxt;
+    public bool writeTextDone;
 
     public void SetNewText(string txt)
     {
         myTxt.text = txt;
+        writeTextDone = false;
         StartCoroutine(WriteText());
+        
     }
 
     public void ToggleBox(bool isActive)
@@ -31,6 +34,6 @@ public class DialogBox : MonoBehaviour
             yield return new WaitForSeconds(Dialog.textSpeed); // delay
             i++;
         }
-
+        writeTextDone = true;
     }
 }
