@@ -2,12 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-
+using UnityEngine.UI;
 public class DialogBox : MonoBehaviour
 {
     [SerializeField] private TMP_Text myTxt;
-    public bool writeTextDone;
+    [HideInInspector] public bool writeTextDone;
 
+    private void Start()
+    {
+        ToggleBox(false);
+    }
     public void SetNewText(string txt)
     {
         myTxt.text = txt;
@@ -18,7 +22,15 @@ public class DialogBox : MonoBehaviour
 
     public void ToggleBox(bool isActive)
     {
-        gameObject.SetActive(isActive);
+        myTxt.text = "";
+        if (isActive)
+        {
+            GetComponent<Image>().color = new Color(255, 255, 255, 1);
+        } else
+        {
+            GetComponent<Image>().color = new Color(0, 0, 0, 0);
+
+        }
     }
 
     private IEnumerator WriteText()

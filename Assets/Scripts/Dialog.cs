@@ -43,7 +43,7 @@ public class Dialog : MonoBehaviour
             EndDialog();
         }
     }
-    private void EndDialog()
+    public virtual void EndDialog()
     {
         isTalking = false;
         txtBox.ToggleBox(false);
