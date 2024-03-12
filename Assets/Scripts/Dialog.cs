@@ -2,20 +2,48 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Dialog
+public class Dialog : MonoBehaviour
 {
     [Multiline]
     [SerializeField] private string[] dialogTexts;
     [SerializeField] private DialogBox txtBox;
-
     private int currentDialogIndex;
-    public void StartDialog()
+    private static bool isTalking=false;
+    public static float textSpeed=0.05f;
+
+
+    public void Talk()
     {
+        if (!isTalking) 
+        {
+            isTalking = true;
+            txtBox.ToggleBox(true);
+            txtBox.SetNewText(dialogTexts[0]);
+        } else
+        {
+            NextDialog();
+        }
 
     }
     public void NextDialog()
     {
-        currentDialogIndex++;
+        // check if more dialog is available
+        if (currentDialogIndex<dialogTexts.Length-1)
+        {
+            // set new dialog
+            currentDialogIndex++;
+            txtBox.SetNewText(dialogTexts[currentDialogIndex]);
+        } else
+        {
+            // end dialog
+            EndDialog();
+        }
+    }
+    private void EndDialog()
+    {
+        isTalking = false;
+        txtBox.ToggleBox(false);
+        currentDialogIndex = 0;
     }
 
 
