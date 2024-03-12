@@ -12,22 +12,28 @@ public class DialogBox : MonoBehaviour
     {
         ToggleBox(false);
     }
-    public void SetNewText(string txt)
+    public void SetNewText(string txt, bool write)
     {
         myTxt.text = txt;
         writeTextDone = false;
-        StartCoroutine(WriteText());
-        
+        if (write)
+        {
+            StartCoroutine(WriteText());
+        } else
+        {
+            StopAllCoroutines();
+            writeTextDone = true;
+        }
     }
 
     public void ToggleBox(bool isActive)
     {
-        myTxt.text = "";
         if (isActive)
         {
             GetComponent<Image>().color = new Color(255, 255, 255, 1);
         } else
         {
+            myTxt.text = "";
             GetComponent<Image>().color = new Color(0, 0, 0, 0);
 
         }

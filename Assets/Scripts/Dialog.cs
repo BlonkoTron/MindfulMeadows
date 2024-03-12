@@ -22,10 +22,16 @@ public class Dialog : MonoBehaviour
             PlayerMovement.instance.canMove = false;
             isTalking = true;
             txtBox.ToggleBox(true);
-            txtBox.SetNewText(dialogTexts[0]);
+            txtBox.SetNewText(dialogTexts[0],true);
         } else
         {
-            NextDialog();
+            if (txtBox.writeTextDone)
+            {
+                NextDialog();
+            } else
+            {
+                txtBox.SetNewText(dialogTexts[currentDialogIndex], false);
+            }
         }
 
     }
@@ -36,7 +42,7 @@ public class Dialog : MonoBehaviour
         {
             // set new dialog
             currentDialogIndex++;
-            txtBox.SetNewText(dialogTexts[currentDialogIndex]);
+            txtBox.SetNewText(dialogTexts[currentDialogIndex],true);
         } else
         {
             // end dialog
