@@ -4,6 +4,7 @@ public class PickupWithDialog : Dialog
     {
         isTalking = false;
         txtBox.ToggleBox(false);
+        PlayerMovement.instance.canMove = true;
         // give player some item
 
 

@@ -90,6 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myTxt: {fileID: 2730807352376007103}
+  writeTextDone: 0
 --- !u!1 &4346507461046284445
 GameObject:
   m_ObjectHideFlags: 0
