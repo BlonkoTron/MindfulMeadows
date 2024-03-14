@@ -301,7 +301,7 @@ GameObject:
   - component: {fileID: 6018148450033047976}
   - component: {fileID: 2999022981768532224}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: prompt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -476,6 +476,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc810a3af41c72945b82d3a6bc6c0460, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  promptText: {fileID: 2999022981768532224}
 --- !u!95 &4684060107028924667
 Animator:
   serializedVersion: 5
@@ -881,7 +882,7 @@ GameObject:
   - component: {fileID: 3811385136923508197}
   - component: {fileID: 5496970193472504854}
   m_Layer: 5
-  m_Name: Image
+  m_Name: bgimage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
