@@ -40,11 +40,8 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
-    {   
-
-
-
+    void Update()
+    {
         #region Movement
 
         if (movement != null)
@@ -54,18 +51,18 @@ public class PlayerMovement : MonoBehaviour
             {
                 Quaternion toRoataion = Quaternion.LookRotation(movement, Vector3.up);
 
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, toRoataion, rotationSpeed * Time.fixedDeltaTime);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, toRoataion, rotationSpeed * Time.deltaTime);
             }
 
             float magnitude = Mathf.Clamp01(movement.magnitude);
-            transform.Translate(movement.normalized * magnitude * speed * Time.fixedDeltaTime);
+            transform.Translate(movement.normalized * magnitude * speed * Time.deltaTime);
 
         }
         #endregion
     }
 
     void OnMovement(InputValue input)
-    {   
+    {
         if (canMove)
         {
             movement = Quaternion.AngleAxis(cameraTransform.rotation.eulerAngles.y, Vector3.up) * input.Get<Vector3>();
@@ -78,7 +75,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void OnJump(InputValue input)
-    {   
+    {
         if (isGrounded && canMove)
         {
             if (canJump)
