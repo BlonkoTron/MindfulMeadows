@@ -24,19 +24,25 @@ public class PlayerMovement : MonoBehaviour
 
 
     #region private stuff
+    //private variables
     private Vector3 movement;
+    private Vector3 velocity;
+
+    private float ySpeed;
+
+    //private components
     private Rigidbody rb;
+    private CharacterController controller;
+
+
 
     #endregion
 
     private void Awake()
     {
         instance = this;
-    }
-
-    void Start()
-    {
         rb = GetComponent<Rigidbody>();
+        controller = GetComponent<CharacterController>();
     }
 
     // Update is called once per frame
@@ -44,8 +50,7 @@ public class PlayerMovement : MonoBehaviour
     {
         #region Movement
 
-        if (movement != null)
-        {
+        
 
             if (movement != Vector3.zero)
             {
@@ -54,11 +59,26 @@ public class PlayerMovement : MonoBehaviour
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, toRoataion, rotationSpeed * Time.deltaTime);
             }
 
-            float magnitude = Mathf.Clamp01(movement.magnitude);
-            transform.Translate(movement.normalized * magnitude * speed * Time.deltaTime);
+        float magnitude = Mathf.Clamp01(movement.magnitude) * speed;
 
-        }
+        velocity = movement * magnitude;
+
         #endregion
+
+        #region Calculating Jump
+
+        ySpeed += Physics.gravity.y * Time.deltaTime;
+
+        velocity.y = ySpeed;
+        
+        #endregion
+
+        #region Moving the Character
+
+       controller.Move(velocity * Time.deltaTime);
+
+        #endregion
+
     }
 
     void OnMovement(InputValue input)
@@ -71,17 +91,19 @@ public class PlayerMovement : MonoBehaviour
         {
             movement = Vector3.zero;
         }
-
+        
     }
 
     void OnJump(InputValue input)
     {
-        if (isGrounded && canMove)
+        if (canMove && canJump)
         {
-            if (canJump)
+            if (controller.isGrounded)
             {
-                rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                ySpeed = jumpForce;
             }
+                
+
         }
 
     }
