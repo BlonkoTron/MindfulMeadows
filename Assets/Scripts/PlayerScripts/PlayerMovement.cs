@@ -13,15 +13,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private float jumpForce;
     [SerializeField] private float rotationSpeed;
+    [SerializeField] private float jumpGracePeriod;
     public bool isGrounded = false;
     public bool canJump = true;
     public bool canMove = true;
 
     #endregion
-
-    [Header("Others")]
-    [SerializeField] private Transform cameraTransform;
-
 
     #region private stuff
     //private variables
@@ -29,11 +26,16 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 velocity;
 
     private float ySpeed;
+    private float? lastGroundedTime = null;
+    private float? lastJumpPress = null;
 
     //private components
     private Rigidbody rb;
     private CharacterController controller;
 
+    //GameObjects
+    private GameObject mainCamera;
+    private Transform cameraTransform;
 
 
     #endregion
@@ -43,14 +45,16 @@ public class PlayerMovement : MonoBehaviour
         instance = this;
         rb = GetComponent<Rigidbody>();
         controller = GetComponent<CharacterController>();
+
+        mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+        cameraTransform = mainCamera.transform;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        #region Movement
-
-        
+#region Movement
 
             if (movement != Vector3.zero)
             {
@@ -63,21 +67,27 @@ public class PlayerMovement : MonoBehaviour
 
         velocity = movement * magnitude;
 
-        #endregion
+#endregion
 
-        #region Calculating Jump
+#region Calculating Jump
 
         ySpeed += Physics.gravity.y * Time.deltaTime;
 
         velocity.y = ySpeed;
-        
-        #endregion
 
-        #region Moving the Character
+        if (controller.isGrounded)
+        {
+            lastGroundedTime = Time.time;
+        }
+
+
+#endregion
+
+#region Moving the Character
 
        controller.Move(velocity * Time.deltaTime);
 
-        #endregion
+#endregion
 
     }
 
@@ -96,14 +106,22 @@ public class PlayerMovement : MonoBehaviour
 
     void OnJump(InputValue input)
     {
-        if (canMove && canJump)
-        {
-            if (controller.isGrounded)
-            {
-                ySpeed = jumpForce;
-            }
-                
+        
+        lastJumpPress = Time.time;
 
+        if (canMove && canJump)
+        {   
+            if (Time.time - lastGroundedTime <= jumpGracePeriod)
+            {   
+
+                if (Time.time - lastJumpPress <= jumpGracePeriod) 
+                {
+                    ySpeed = jumpForce;
+                    lastJumpPress = null;
+                    lastGroundedTime = null;
+                }
+                
+            }
         }
 
     }

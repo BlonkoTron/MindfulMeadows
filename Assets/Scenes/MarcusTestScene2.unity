@@ -3135,11 +3135,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8165207253894215147, guid: f5f26f87edfd2df489c7deeafbf9ff7c, type: 3}
   m_PrefabInstance: {fileID: 518657059}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1951576875 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2121602591062241402, guid: 94df63941d3ec404281c7be02dbb2a0c, type: 3}
-  m_PrefabInstance: {fileID: 7322403612938967942}
-  m_PrefabAsset: {fileID: 0}
 --- !u!20 &1951576878 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 7860801612476314588, guid: 94df63941d3ec404281c7be02dbb2a0c, type: 3}
@@ -3387,7 +3382,11 @@ PrefabInstance:
     - target: {fileID: 9038853696646938995, guid: 732dbbaaa88b8ae468b2e60c6743437f, type: 3}
       propertyPath: cameraTransform
       value: 
-      objectReference: {fileID: 1951576875}
+      objectReference: {fileID: 0}
+    - target: {fileID: 9038853696646938995, guid: 732dbbaaa88b8ae468b2e60c6743437f, type: 3}
+      propertyPath: jumpGracePeriod
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3488,11 +3487,11 @@ PrefabInstance:
       objectReference: {fileID: 788508129}
     - target: {fileID: 5227798464320782476, guid: 94df63941d3ec404281c7be02dbb2a0c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000017046323
+      value: -0.000000017046323
       objectReference: {fileID: 0}
     - target: {fileID: 5227798464320782476, guid: 94df63941d3ec404281c7be02dbb2a0c, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000023414584
+      value: 0.0000000023414584
       objectReference: {fileID: 0}
     - target: {fileID: 5283569691747106723, guid: 94df63941d3ec404281c7be02dbb2a0c, type: 3}
       propertyPath: m_LocalPosition.x
