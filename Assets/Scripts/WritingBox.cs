@@ -6,6 +6,7 @@ using TMPro;
 public class WritingBox : MonoBehaviour
 {
     private string myText;
+    [SerializeField] private TMP_Text promptText;
     private TMP_InputField myIputField;
     private Animator anim;
 
@@ -26,7 +27,13 @@ public class WritingBox : MonoBehaviour
 
     public void OpenWritingBox()
     {
+        promptText.text = "";
         anim.SetBool("isActive",true);
+    }
+    public void OpenWritingBox(string prompt)
+    {
+        promptText.text = prompt;
+        anim.SetBool("isActive", true);
     }
     public void CloseWritingBox()
     {
