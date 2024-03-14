@@ -877,7 +877,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 436825438}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.100003965, y: 0.00000001764702, z: -0.0000000017736637, w: 0.9949871}
+  m_LocalRotation: {x: 0.100003965, y: -0.00000001764702, z: 0.0000000017736637, w: 0.9949871}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2678,7 +2678,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1366357311}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.1360808, y: 0.000000017046323, z: -0.0000000023414584, w: 0.99069774}
+  m_LocalRotation: {x: 0.1360808, y: -0.000000017046323, z: 0.0000000023414584, w: 0.99069774}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2887,18 +2887,6 @@ PrefabInstance:
     - target: {fileID: 403766209042046135, guid: adc6a327fcf481e4cbf0feb14f51ad9a, type: 3}
       propertyPath: m_Name
       value: dialogBox
-      objectReference: {fileID: 0}
-    - target: {fileID: 403766209042046135, guid: adc6a327fcf481e4cbf0feb14f51ad9a, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 403766209042046135, guid: adc6a327fcf481e4cbf0feb14f51ad9a, type: 3}
-      propertyPath: m_TagString
-      value: dialogbox
-      objectReference: {fileID: 0}
-    - target: {fileID: 3323286089861764443, guid: adc6a327fcf481e4cbf0feb14f51ad9a, type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5906270333291692908, guid: adc6a327fcf481e4cbf0feb14f51ad9a, type: 3}
       propertyPath: m_Pivot.x

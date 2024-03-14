@@ -14,11 +14,11 @@ GameObject:
   - component: {fileID: 6124365678539212924}
   m_Layer: 5
   m_Name: dialogBox
-  m_TagString: Untagged
+  m_TagString: dialogbox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5906270333291692908
 RectTransform:
   m_ObjectHideFlags: 0
@@ -158,8 +158,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: blablabla...
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b9d82299a1242eb47b7e75378f0b6648, type: 2}
+  m_sharedMaterial: {fileID: 1995192882598702308, guid: b9d82299a1242eb47b7e75378f0b6648, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
