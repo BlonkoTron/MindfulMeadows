@@ -10,9 +10,12 @@ public class Dialog : MonoBehaviour
     private protected int currentDialogIndex;
     public static bool isTalking=false;
     public static float textSpeed=0.05f;
+    [SerializeField] private AudioClip talkingSound;
+    private AudioSource audioSrc;
 
     private void Start()
     {
+        audioSrc = GetComponent<AudioSource>();
         txtBox = GameObject.FindGameObjectWithTag("dialogbox").GetComponent<DialogBox>();
     }
     public void Talk()
@@ -23,11 +26,13 @@ public class Dialog : MonoBehaviour
             isTalking = true;
             txtBox.ToggleBox(true);
             txtBox.SetNewText(dialogTexts[0],true);
+            PlayTalkingSound();
         } else
         {
             if (txtBox.writeTextDone)
             {
                 NextDialog();
+                PlayTalkingSound();
             } else
             {
                 txtBox.SetNewText(dialogTexts[currentDialogIndex], false);
@@ -54,8 +59,15 @@ public class Dialog : MonoBehaviour
         isTalking = false;
         txtBox.ToggleBox(false);
         currentDialogIndex = 0;
-        PlayerMovement.instance.canMove = true;
-        
+        PlayerMovement.instance.canMove = true;   
+    }
+
+    private void PlayTalkingSound()
+    {
+        if (audioSrc!=null && talkingSound!=null)
+        {
+            audioSrc.PlayOneShot(talkingSound);
+        }
     }
 
 
