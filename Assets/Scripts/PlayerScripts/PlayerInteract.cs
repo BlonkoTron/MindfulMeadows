@@ -6,16 +6,17 @@ using UnityEngine.InputSystem;
 
 public class PlayerInteract : MonoBehaviour
 {
-    private bool canTalk;
-    private Dialog npcDialog;
+    private bool canInteract;
+    private Interaction Interactable;
 
     void OnInteract(InputValue input)
     {
-        if (canTalk || Dialog.isTalking)
+        if (canInteract || Interaction.isInteracting)
         {
-            if (npcDialog != null)
-            {   
-                npcDialog.Talk();
+            if (Interactable != null)
+            {
+                PlayerMovement.instance.canMove = false;
+                Interactable.Interact();
             }
         }
     }
@@ -28,11 +29,11 @@ public class PlayerInteract : MonoBehaviour
 
             PlayerMovement.instance.canJump = false;
 
-            npcDialog = trigger.GetComponent<Dialog>();
+            Interactable = trigger.GetComponent<Interaction>();
 
-            if (npcDialog != null)
+            if (Interactable != null)
             {
-                canTalk = true;
+                canInteract = true;
             }
 
         }
@@ -44,7 +45,7 @@ public class PlayerInteract : MonoBehaviour
         {
             PlayerMovement.instance.canJump = true;
 
-            canTalk = false;
+            canInteract = false;
         }
     }
 }
