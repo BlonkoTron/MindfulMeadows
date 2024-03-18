@@ -9,6 +9,7 @@ public class WritingBox : MonoBehaviour
     [SerializeField] private TMP_Text promptText;
     private TMP_InputField myIputField;
     private Animator anim;
+    [HideInInspector] public Write myWrite;
 
     private void Start()
     {
@@ -38,5 +39,6 @@ public class WritingBox : MonoBehaviour
     public void CloseWritingBox()
     {
         anim.SetBool("isActive", false);
+        myWrite.InteractionEnd();
     }
 }

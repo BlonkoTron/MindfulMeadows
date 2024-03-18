@@ -49,7 +49,7 @@ public class DialogBox : MonoBehaviour
         while (i <= textLength)
         {
             myTxt.text = myText.Insert(i, "<alpha=#00>");
-            yield return new WaitForSeconds(Dialog.textSpeed); // delay
+            yield return new WaitForSeconds(Talk.textSpeed); // delay
             i++;
         }
         writeTextDone = true;
