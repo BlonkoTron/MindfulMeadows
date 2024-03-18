@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
@@ -10,10 +11,12 @@ public class PlayerMovement : MonoBehaviour
 
     #region movement values
     [Header("Movementstuff")]
-    [SerializeField] private float speed;
+    [SerializeField] private float maxSpeed;
     [SerializeField] private float jumpForce;
     [SerializeField] private float rotationSpeed;
     [SerializeField] private float jumpGracePeriod;
+    [SerializeField] private float acceleration;
+    private float currentSpeed;
     public bool isGrounded = false;
     public bool canJump = true;
     public bool canMove = true;
@@ -54,18 +57,18 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-#region Movement
+#region Calculating Movement
 
-            if (movement != Vector3.zero)
-            {
-                Quaternion toRoataion = Quaternion.LookRotation(movement, Vector3.up);
+        if (movement != Vector3.zero)
+        {
+            Quaternion toRoataion = Quaternion.LookRotation(movement, Vector3.up);
 
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, toRoataion, rotationSpeed * Time.deltaTime);
-            }
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRoataion, rotationSpeed * Time.deltaTime);
+        }
 
         Vector3 direction = Quaternion.AngleAxis(cameraTransform.rotation.eulerAngles.y, Vector3.up) * movement.normalized;
 
-        float magnitude = Mathf.Clamp01(movement.magnitude) * speed;
+        float magnitude = Mathf.Clamp01(movement.magnitude) * maxSpeed;
 
         velocity = movement + direction * magnitude;
 
