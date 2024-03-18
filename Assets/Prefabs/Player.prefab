@@ -146,10 +146,10 @@ MonoBehaviour:
   speed: 6
   jumpForce: 6
   rotationSpeed: 5
+  jumpGracePeriod: 0.1
   isGrounded: 0
   canJump: 1
   canMove: 1
-  cameraTransform: {fileID: 0}
 --- !u!143 &3168388249647880194
 CharacterController:
   m_ObjectHideFlags: 0
