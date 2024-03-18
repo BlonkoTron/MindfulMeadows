@@ -65,8 +65,6 @@ public class PlayerMovement : MonoBehaviour
 
         Vector3 direction = Quaternion.AngleAxis(cameraTransform.rotation.eulerAngles.y, Vector3.up) * movement.normalized;
 
-
-
         float magnitude = Mathf.Clamp01(movement.magnitude) * speed;
 
         velocity = movement + direction * magnitude;
@@ -89,7 +87,12 @@ public class PlayerMovement : MonoBehaviour
 
 #region Moving the Character
 
-       controller.Move(velocity * Time.deltaTime);
+
+        if (canMove)
+        {
+            controller.Move(velocity * Time.deltaTime);
+        }
+        
 
 #endregion
 
@@ -105,7 +108,7 @@ public class PlayerMovement : MonoBehaviour
         {
             movement = Vector3.zero;
         }
-        
+     
     }
 
     void OnJump(InputValue input)
