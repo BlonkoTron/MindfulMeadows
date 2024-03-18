@@ -1,8 +1,8 @@
-public class PickupWithDialog : Dialog
+public class PickupTalk : Talk
 {
-    public override void EndDialog()
+    public override void InteractionEnd()
     {
-        isTalking = false;
+        isInteracting = false;
         txtBox.ToggleBox(false);
         PlayerMovement.instance.canMove = true;
         PlayerMovement.instance.canJump = true;

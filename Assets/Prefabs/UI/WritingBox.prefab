@@ -436,7 +436,7 @@ GameObject:
   - component: {fileID: 4684060107028924667}
   m_Layer: 5
   m_Name: WritingBox
-  m_TagString: Untagged
+  m_TagString: writingbox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
