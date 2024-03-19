@@ -11,12 +11,16 @@ public class PlayerMovement : MonoBehaviour
 
     #region movement values
     [Header("Movementstuff")]
-    [SerializeField] private float maxSpeed;
-    [SerializeField] private float jumpForce;
-    [SerializeField] private float rotationSpeed;
-    [SerializeField] private float jumpGracePeriod;
-    [SerializeField] private float acceleration;
-    private float currentSpeed;
+    [SerializeField] private float maxSpeed = 6f;
+    [SerializeField] private float jumpForce = 6f;
+    [SerializeField] private float rotationSpeed = 2f;
+    [SerializeField] private float jumpGracePeriod = 0.1f;
+    [SerializeField] private float accelerationTimeToMax = 2.5f;
+    [SerializeField] private float deccelerationTimeToZero = 0.8f;
+    [SerializeField] private float currentSpeed;
+    private float accelRate;
+    private float decelRate;
+
     public bool isGrounded = false;
     public bool canJump = true;
     public bool canMove = true;
@@ -26,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
     #region private stuff
     //private variables
     private Vector3 movement;
+    private Vector3 lastMovement;
     private Vector3 velocity;
 
     private float ySpeed;
@@ -52,6 +57,10 @@ public class PlayerMovement : MonoBehaviour
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         cameraTransform = mainCamera.transform;
 
+        accelRate = maxSpeed / accelerationTimeToMax;
+
+        decelRate = -maxSpeed / deccelerationTimeToZero;
+
     }
 
     // Update is called once per frame
@@ -64,14 +73,29 @@ public class PlayerMovement : MonoBehaviour
             Quaternion toRoataion = Quaternion.LookRotation(movement, Vector3.up);
 
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRoataion, rotationSpeed * Time.deltaTime);
+
+
+            currentSpeed += accelRate * Time.deltaTime;
+            currentSpeed = Mathf.Min(currentSpeed, maxSpeed);
+
+        }
+        else
+        {   
+            currentSpeed += decelRate * Time.deltaTime;
+            currentSpeed = Mathf.Max(currentSpeed, 0);
         }
 
         Vector3 direction = Quaternion.AngleAxis(cameraTransform.rotation.eulerAngles.y, Vector3.up) * movement.normalized;
 
-        float magnitude = Mathf.Clamp01(movement.magnitude) * maxSpeed;
+        float magnitude = Mathf.Clamp01(movement.magnitude) * currentSpeed;
 
-        velocity = movement + direction * magnitude;
+        if (movement != Vector3.zero)
+        {
 
+            velocity = movement + direction * magnitude;
+
+        }
+        
 #endregion
 
 #region Calculating Jump
@@ -111,7 +135,9 @@ public class PlayerMovement : MonoBehaviour
         {
             movement = Vector3.zero;
         }
-     
+
+        
+
     }
 
     void OnJump(InputValue input)
