@@ -10,12 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1409350744766325900}
   - component: {fileID: 5878514009297931630}
-  - component: {fileID: 1472615543806735168}
-  - component: {fileID: 1266256887703038089}
+  - component: {fileID: 832911350278614903}
   - component: {fileID: 2961581979246879532}
+  - component: {fileID: 264968709093543757}
   m_Layer: 0
   m_Name: PickupCube
-  m_TagString: Interactable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -54,9 +54,9 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 2
+  m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1472615543806735168
+--- !u!114 &832911350278614903
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -65,13 +65,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 6978767905780164523}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9660ebf06cd9654ebaf5ef7e8cb65b5, type: 3}
+  m_Script: {fileID: 11500000, guid: cdb59ae1c40e2524080be552c345a42a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogTexts:
-  - You found a cube!
-  txtBox: {fileID: 0}
---- !u!212 &1266256887703038089
+  pickupRange: 1
+  pickupSpeed: 5
+--- !u!114 &2961581979246879532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6978767905780164523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bde362013b6c97a44b3846f54a63c1bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useStaticBillboard: 0
+--- !u!212 &264968709093543757
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -123,16 +135,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2961581979246879532
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6978767905780164523}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bde362013b6c97a44b3846f54a63c1bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  useStaticBillboard: 0
