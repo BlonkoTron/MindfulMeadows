@@ -22,7 +22,6 @@ public class PlayerMovement : MonoBehaviour
     private float decelRate;
 
     public bool isGrounded = false;
-    public bool canJump = true;
     public bool canMove = true;
 
     #endregion
@@ -63,30 +62,37 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
 #region Calculating Movement
 
         if (movement != Vector3.zero)
-        {
+        {   
+
+            // Here we calculate the rotation of the character to see what direction it should be facing
+            // we are also rotating it
             Quaternion toRoataion = Quaternion.LookRotation(movement, Vector3.up);
 
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRoataion, rotationSpeed * Time.deltaTime);
 
-
+            // Calculation of the current speed bu the acceleration rate
+            //mathf.min is used to take the smaller value of either currentSpeed or maxSpeed since we don't want currentSpeed if its larger than maxSpeed
             currentSpeed += accelRate * Time.deltaTime;
             currentSpeed = Mathf.Min(currentSpeed, maxSpeed);
 
         }
         else
         {   
+            // Almost the same as acceleration instead mathf.max to take the larger value
             currentSpeed += decelRate * Time.deltaTime;
             currentSpeed = Mathf.Max(currentSpeed, 0);
         }
 
+        // here we calculate the direction our character should be moving based on the camera position
         Vector3 direction = Quaternion.AngleAxis(cameraTransform.rotation.eulerAngles.y, Vector3.up) * movement.normalized;
 
+        // Here we determine the magnitude of the vector for the movement which corelates to the speed our character should move with.
         float magnitude = Mathf.Clamp01(movement.magnitude) * currentSpeed;
 
         velocity = movement + direction * magnitude;
@@ -94,6 +100,8 @@ public class PlayerMovement : MonoBehaviour
 #endregion
 
 #region Calculating Jump
+
+        // using unity physics to change the speed of the velocity on the y axis.
 
         ySpeed += Physics.gravity.y * Time.deltaTime;
 
@@ -111,7 +119,8 @@ public class PlayerMovement : MonoBehaviour
 
 
         if (canMove)
-        {
+        {   
+            // using the character controller component to move the character.
             controller.Move(velocity * Time.deltaTime);
         }
         
@@ -121,7 +130,9 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void OnMovement(InputValue input)
-    {
+    {   
+
+        // inputsystem for movement is our input
         if (canMove)
         {
             movement = input.Get<Vector3>();
@@ -140,13 +151,13 @@ public class PlayerMovement : MonoBehaviour
         
         lastJumpPress = Time.time;
 
-        if (canMove && canJump)
+        if (canMove)
         {   
             if (Time.time - lastGroundedTime <= jumpGracePeriod)
             {   
 
                 if (Time.time - lastJumpPress <= jumpGracePeriod) 
-                {
+                {   
                     ySpeed = jumpForce;
                     lastJumpPress = null;
                     lastGroundedTime = null;

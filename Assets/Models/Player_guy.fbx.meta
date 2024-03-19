@@ -24,7 +24,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -35,7 +35,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 0.25
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -43,8 +43,8 @@ ModelImporter:
     importPhysicalCameras: 1
     importVisibility: 1
     importBlendShapes: 1
-    importCameras: 1
-    importLights: 1
+    importCameras: 0
+    importLights: 0
     nodeNameCollisionStrategy: 1
     fileIdsGeneration: 2
     swapUVChannels: 0
@@ -78,11 +78,101 @@ ModelImporter:
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
   referencedClips: []
-  importAnimation: 1
+  importAnimation: 0
   humanDescription:
     serializedVersion: 3
     human: []
-    skeleton: []
+    skeleton:
+    - name: Player_guy(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Light
+      parentName: Player_guy(Clone)
+      position: {x: -0.51999724, y: 1.4759655, z: 1.163179}
+      rotation: {x: 0.52327543, y: -0.34203392, z: 0.72694236, w: 0.28416622}
+      scale: {x: 100.00001, y: 100, z: 100}
+    - name: Camera
+      parentName: Player_guy(Clone)
+      position: {x: -1.8397229, y: 2.5367436, z: 1.7314477}
+      rotation: {x: 0.09062847, y: 0.89379627, z: -0.20997298, w: 0.3857799}
+      scale: {x: 100, y: 100.00001, z: 99.99999}
+    - name: Head
+      parentName: Player_guy(Clone)
+      position: {x: -0, y: 1.3315103, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 85.25749, y: 90.844376, z: 117.01478}
+    - name: left eye
+      parentName: Player_guy(Clone)
+      position: {x: -0.028801307, y: 1.3799329, z: 0.21988943}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 59.017784, y: 100, z: 175.96231}
+    - name: right eye
+      parentName: Player_guy(Clone)
+      position: {x: 0.046601575, y: 1.3804191, z: 0.2163247}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 59.017784, y: 100, z: 175.96231}
+    - name: Right_Arm
+      parentName: Player_guy(Clone)
+      position: {x: 0.2574723, y: 0.9075533, z: 0.012604336}
+      rotation: {x: -0.71268594, y: -0.108985074, z: 0.06438025, w: 0.6899683}
+      scale: {x: 26.180634, y: 34.38379, z: 132.47665}
+    - name: Body
+      parentName: Player_guy(Clone)
+      position: {x: -0.0062894225, y: 0.81530577, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 118.58751, y: 60.934467, z: 181.11902}
+    - name: Right_Leg
+      parentName: Player_guy(Clone)
+      position: {x: 0.1416485, y: 0.26210976, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 31.935532, y: 34.408863, z: 133.78079}
+    - name: Left_Leg
+      parentName: Player_guy(Clone)
+      position: {x: -0.15802225, y: 0.26366538, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 31.935532, y: 34.408863, z: 133.78079}
+    - name: Left_Arm
+      parentName: Player_guy(Clone)
+      position: {x: -0.26593125, y: 0.9085332, z: 0.0060528303}
+      rotation: {x: -0.7024202, y: 0.081276335, z: -0.081276335, w: 0.7024203}
+      scale: {x: 27.990192, y: 34.408863, z: 132.92493}
+    - name: Bag
+      parentName: Player_guy(Clone)
+      position: {x: -0.28571162, y: 0.5963576, z: 0}
+      rotation: {x: -0.69745684, y: 0.11642097, z: -0.11642098, w: 0.697457}
+      scale: {x: 27.029049, y: 84.819374, z: 59.95658}
+    - name: Bag_Flipper
+      parentName: Player_guy(Clone)
+      position: {x: -0.33080187, y: 0.6885417, z: 0}
+      rotation: {x: -0.69745696, y: 0.116421, z: -0.11642099, w: 0.69745684}
+      scale: {x: 1.9089507, y: 84.00052, z: 30.92736}
+    - name: Bag_Satchel
+      parentName: Player_guy(Clone)
+      position: {x: -0.22605354, y: 0.75099903, z: 0.21230981}
+      rotation: {x: 0.00000002154644, y: -0.0000000036636763, z: -0.16763027, w: 0.98585}
+      scale: {x: 6.1303687, y: 6.1303687, z: 6.1303687}
+    - name: Torus
+      parentName: Player_guy(Clone)
+      position: {x: -0.35761568, y: 0.6152275, z: 0.117781855}
+      rotation: {x: 0.45656484, y: 0.5399524, z: -0.53995234, w: -0.45656487}
+      scale: {x: 5.4990706, y: 5.499071, z: 5.4990706}
+    - name: Torus.001
+      parentName: Player_guy(Clone)
+      position: {x: -0.35761568, y: 0.6152275, z: -0.09768072}
+      rotation: {x: 0.45656484, y: 0.5399524, z: -0.53995234, w: -0.45656487}
+      scale: {x: 5.4990706, y: 5.499071, z: 5.4990706}
+    - name: Left_Foot
+      parentName: Player_guy(Clone)
+      position: {x: -0.11840264, y: 0.025483467, z: 0.019718457}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: -8.798916, y: -21.919739, z: -9.169567}
+    - name: Right_Foot
+      parentName: Player_guy(Clone)
+      position: {x: 0.11841011, y: 0.025483467, z: 0.019718457}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: -8.798916, y: -21.919739, z: -9.169567}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
@@ -90,16 +180,16 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 1
-    rootMotionBoneName: 
+    globalScale: 0.25
+    rootMotionBoneName: Body
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 0
+  avatarSetup: 1
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   importBlendShapeDeformPercent: 1
   remapMaterialsIfMaterialImportModeIsNone: 0

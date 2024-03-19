@@ -6,8 +6,28 @@ using UnityEngine.InputSystem;
 
 public class PlayerInteract : MonoBehaviour
 {
+    [SerializeField] private GameObject interactionMark;
+    
     private bool canInteract;
+    private bool markActive;
     private Interaction Interactable;
+
+    private void Update()
+    {
+        if (interactionMark != null)
+        {
+            if (canInteract)
+            {
+                interactionMark.SetActive(true);
+       
+            }
+            else
+            {
+                interactionMark.SetActive(false);
+       
+            }
+        }
+    }
 
     void OnInteract(InputValue input)
     {
@@ -27,8 +47,6 @@ public class PlayerInteract : MonoBehaviour
         if (trigger.gameObject.CompareTag("Interactable"))
         {   
 
-            PlayerMovement.instance.canJump = false;
-
             Interactable = trigger.GetComponent<Interaction>();
 
             if (Interactable != null)
@@ -43,7 +61,6 @@ public class PlayerInteract : MonoBehaviour
     {
         if (trigger.gameObject.CompareTag("Interactable"))
         {
-            PlayerMovement.instance.canJump = true;
 
             canInteract = false;
         }
