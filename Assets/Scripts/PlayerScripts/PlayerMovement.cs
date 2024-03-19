@@ -89,12 +89,7 @@ public class PlayerMovement : MonoBehaviour
 
         float magnitude = Mathf.Clamp01(movement.magnitude) * currentSpeed;
 
-        if (movement != Vector3.zero)
-        {
-
-            velocity = movement + direction * magnitude;
-
-        }
+        velocity = movement + direction * magnitude;
         
 #endregion
 
