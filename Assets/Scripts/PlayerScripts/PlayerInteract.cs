@@ -8,7 +8,7 @@ public class PlayerInteract : MonoBehaviour
 {
     [SerializeField] private GameObject interactionMark;
     
-    private bool canInteract;
+    public bool canInteract;
     private bool markActive;
     private Interaction Interactable;
 
