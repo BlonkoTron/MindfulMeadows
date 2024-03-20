@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MenuButtons : MonoBehaviour
+public class MenuFunctions : MonoBehaviour
 {
 
     [SerializeField] private GameObject SettingMenu;
@@ -19,6 +19,7 @@ public class MenuButtons : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             EscapeMenuBool();
+            Debug.Log("Escape Pressed");
         }
     }
     public void StartGame()
@@ -45,18 +46,17 @@ public class MenuButtons : MonoBehaviour
     }
 
     // Settings Menu
-    public void SettingsMenu()
+    public void SettingsMenuBool()
     {
         if (SettingMenu.activeSelf)
         {
-         //   GameManager.instance.Resume();
             SettingMenu.SetActive(false);
         }
         else
         {
-          //  GameManager.instance.Pause();
             SettingMenu.SetActive(true);
         }
+        Debug.Log("Settings Menu");
     }
     public void EscapeMenuBool()
     {
@@ -70,6 +70,7 @@ public class MenuButtons : MonoBehaviour
             //  GameManager.instance.Pause();
             EscapeMenu.SetActive(true);
         }
+        Debug.Log("Escape Menu Open/Closed");
     }
 
     // Switching between settings
@@ -85,19 +86,29 @@ public class MenuButtons : MonoBehaviour
     }
     public void ExitSettings()
     {
-       // GameManager.instance.Resume();
         CurrentMenu.SetActive(false);
         CurrentMenu = null;
+        Debug.Log("Exiting Settings");
     }
 
     public void GameSettings()
     {
-        // GameManager.instance.Pause();
         SwitchMenu(GameSetting);
+        Debug.Log("Switching to game settings");
     }
     public void AudioSettings()
     {
-        // GameManager.instance.Pause();
         SwitchMenu(AudioSetting);
+        Debug.Log("Switching to audio settings");
+    }
+    public void VideoSettings()
+    {
+        SwitchMenu(VideoSetting);
+        Debug.Log("Switching to video settings");
+    }   
+    public void ControlSettings()
+    {
+        SwitchMenu(ControlSetting);
+        Debug.Log("Switching to control settings");
     }
 }
