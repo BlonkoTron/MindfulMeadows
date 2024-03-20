@@ -5,6 +5,8 @@ using TMPro;
 
 public class WritingBox : MonoBehaviour
 {
+    [SerializeField] GameObject textPlantPrefab;
+
     private string myText;
     [SerializeField] private TMP_Text promptText;
     private TMP_InputField myIputField;
@@ -38,6 +40,8 @@ public class WritingBox : MonoBehaviour
     }
     public void CloseWritingBox()
     {
+
+        Instantiate(textPlantPrefab, GameObject.FindGameObjectWithTag("Player").transform.position, gameObject.transform.rotation);
         anim.SetBool("isActive", false);
         myWrite.InteractionEnd();
     }
