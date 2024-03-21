@@ -5,7 +5,7 @@
 
     public class StressBar : MonoBehaviour
     {
-        private int currentStress;
+        private float currentStress;
         private readonly int maxStress = 100;
         public Sprite[] stressSprites;
         public Image stressImage;
@@ -18,9 +18,9 @@
         }
         void Update()
         {
-            AddStress(1);       
+            AddStress(0.1f);       
         }
-        public void AddStress(int stress)
+        public void AddStress(float stress)
         {
             currentStress += stress;
             if (currentStress > maxStress)
@@ -29,7 +29,7 @@
             }
             UpdateStressBar();
         }
-        public void RemoveStress(int stress)
+        public void RemoveStress(float stress)
         {
             currentStress -= stress;
             if (currentStress < 0)
@@ -38,7 +38,7 @@
             }
             UpdateStressBar();
         }
-        public int GetCurrentStress()
+        public float GetCurrentStress()
         {
             UpdateStressBar();
             return currentStress;
@@ -56,6 +56,10 @@
             if (stressImage != null && stressSprites != null && stressSprites.Length > 0)
             {
                 stressImage.sprite = stressSprites[index];
+            }
+                    if (stressText != null)
+            {
+            stressText.text = "Stress: " + currentStress.ToString();
             }
         }
     }
