@@ -40,7 +40,6 @@ public class WritingBox : MonoBehaviour
     }
     public void CloseWritingBox()
     {
-
         Instantiate(textPlantPrefab, GameObject.FindGameObjectWithTag("Player").transform.position, gameObject.transform.rotation);
         anim.SetBool("isActive", false);
         myWrite.InteractionEnd();
