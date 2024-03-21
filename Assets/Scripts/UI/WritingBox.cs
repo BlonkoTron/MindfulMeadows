@@ -13,6 +13,8 @@ public class WritingBox : MonoBehaviour
     private Animator anim;
     [HideInInspector] public Write myWrite;
 
+    private float playerOffSet = 0.4f;
+
     private void Start()
     {
         anim = GetComponent<Animator>();
@@ -40,7 +42,9 @@ public class WritingBox : MonoBehaviour
     }
     public void CloseWritingBox()
     {
-        Instantiate(textPlantPrefab, GameObject.FindGameObjectWithTag("Player").transform.position, gameObject.transform.rotation);
+        Vector3 playerPos = GameObject.FindGameObjectWithTag("Player").transform.position;
+
+        Instantiate(textPlantPrefab, new Vector3(playerPos.x, playerPos.y-playerOffSet, playerPos.z), gameObject.transform.rotation);
         anim.SetBool("isActive", false);
         myWrite.InteractionEnd();
     }

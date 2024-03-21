@@ -6,7 +6,7 @@ public class Sapling : MonoBehaviour
 {
 
     [SerializeField] private float growTime;
-    [SerializeField] private GameObject treePrefab;
+    [SerializeField] private GameObject tree;
 
     private float currentGrowTime;
     private bool canGrow = true;
@@ -35,7 +35,7 @@ public class Sapling : MonoBehaviour
 
     private void OnDestroy()
     {
-        Instantiate(treePrefab, transform.position, transform.rotation);
+        tree.SetActive(true);
     }
 
     private void OnTriggerEnter(Collider other)
