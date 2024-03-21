@@ -14,8 +14,6 @@ public class PlayerWrite : Interaction
     private void Start()
     {
         myWritingBox = GameObject.FindGameObjectWithTag("writingbox").GetComponent<WritingBox>();
-        myWritingBox.myWrite = this.GetComponent<Write>();
-
         playerInteract = GetComponent<PlayerInteract>();
     }
 

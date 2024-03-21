@@ -43,7 +43,7 @@ public class WritingBox : MonoBehaviour
     public void CloseWritingBox()
     {
         Vector3 playerPos = GameObject.FindGameObjectWithTag("Player").transform.position;
-
+        myIputField.text = "";
         Instantiate(textPlantPrefab, new Vector3(playerPos.x, playerPos.y-playerOffSet, playerPos.z), gameObject.transform.rotation);
         anim.SetBool("isActive", false);
         myWrite.InteractionEnd();
