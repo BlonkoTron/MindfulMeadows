@@ -4270,6 +4270,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4873432870304271236, guid: 732dbbaaa88b8ae468b2e60c6743437f, type: 3}
+      propertyPath: interactionMark
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5310952184789031396, guid: 732dbbaaa88b8ae468b2e60c6743437f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -4315,8 +4319,7 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 611129991945129162, guid: 732dbbaaa88b8ae468b2e60c6743437f, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 732dbbaaa88b8ae468b2e60c6743437f, type: 3}
@@ -4577,11 +4580,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 496705303055035686, guid: 94df63941d3ec404281c7be02dbb2a0c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.00000001764702
+      value: -0.00000001764702
       objectReference: {fileID: 0}
     - target: {fileID: 496705303055035686, guid: 94df63941d3ec404281c7be02dbb2a0c, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000017736637
+      value: 0.0000000017736637
       objectReference: {fileID: 0}
     - target: {fileID: 2121602591062241402, guid: 94df63941d3ec404281c7be02dbb2a0c, type: 3}
       propertyPath: m_LocalPosition.y
