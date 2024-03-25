@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.InputSystem;
 
 public class WritingBox : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class WritingBox : MonoBehaviour
     private TMP_InputField myIputField;
     private Animator anim;
     [HideInInspector] public Write myWrite;
+    private SeedCounter seedCounter;
 
     private float playerOffSet = 0.4f;
 
@@ -19,6 +21,7 @@ public class WritingBox : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         myIputField = GetComponentInChildren<TMP_InputField>();
+        seedCounter = GameObject.FindGameObjectWithTag("seedCounter").GetComponent<SeedCounter>();
     }
     public void SubmitText()
     {
@@ -46,6 +49,10 @@ public class WritingBox : MonoBehaviour
         myIputField.text = "";
         Instantiate(textPlantPrefab, new Vector3(playerPos.x, playerPos.y-playerOffSet, playerPos.z), gameObject.transform.rotation);
         anim.SetBool("isActive", false);
+
+        Inventory.seeds--;
+        seedCounter.UpdateText();
+
         myWrite.InteractionEnd();
     }
 }

@@ -21,10 +21,14 @@ public class Write : Interaction
     }
     public override void InteractionStart()
     {
-        if (!isOpen)
+        if (Inventory.seeds > 0)
         {
-            myWritingBox.OpenWritingBox(prompt);
+            if (!isOpen)
+            {
+                myWritingBox.OpenWritingBox(prompt);
+            }
         }
+
     }
     public override void InteractionEnd()
     {
