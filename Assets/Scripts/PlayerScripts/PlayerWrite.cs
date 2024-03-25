@@ -20,8 +20,12 @@ public class PlayerWrite : Interaction
     private void OnWrite()
     {
         if (!playerInteract.canInteract)
-        {
-            InteractionStart();
+        {   
+            if (Inventory.seeds > 0)
+            {
+                InteractionStart();
+            }
+            
         }
     }
 
