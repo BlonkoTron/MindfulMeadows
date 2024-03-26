@@ -17,7 +17,7 @@
     }
     void Update()
     {
-        AddStress(0.1f);
+        AddStress(0.01f);
     }
     public void AddStress(float stress)
     {
@@ -45,17 +45,35 @@
     public void UpdateStressBar()
     {
         float ratio = (float)currentStress / (float)maxStress;
-        int index = (int)(ratio * stressSprites.Length);
 
-        if (index >= stressSprites.Length)
+        int index = 0;
+
+        if (ratio >= 1f)
         {
-            index = stressSprites.Length - 1;
+            index = 4; // 100% stress
+        }
+        else if (ratio >= 0.75f)
+        {
+            index = 3; // 75-99% stress
+        }
+        else if (ratio >= 0.5f)
+        {
+            index = 2; // 50-74% stress
+        }
+        else if (ratio >= 0.25f)
+        {
+            index = 1; // 25-49% stress
+        }
+        else if (ratio >= 0.0f)
+        {
+            index = 0; // 0-25% stress
         }
 
         if (stressImage != null && stressSprites != null && stressSprites.Length > 0)
         {
             stressImage.sprite = stressSprites[index];
         }
+
         if (stressText != null)
         {
             stressText.text = "Stress: " + currentStress.ToString();
