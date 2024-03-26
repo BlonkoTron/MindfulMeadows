@@ -24,6 +24,7 @@ public class PlayerWrite : Interaction
             if (Inventory.seeds > 0)
             {
                 InteractionStart();
+                PlayerMovement.instance.canMove = false;
             }
             
         }
@@ -33,6 +34,7 @@ public class PlayerWrite : Interaction
     {
         if (!isOpen)
         {
+            myWritingBox.enabled = true;
             myWritingBox.OpenWritingBox();
         }
     }
@@ -40,6 +42,7 @@ public class PlayerWrite : Interaction
     {
         isInteracting = false;
         myInteractionStage = 0;
+        myWritingBox.enabled = false;
         PlayerMovement.instance.canMove = true;
     }
 }

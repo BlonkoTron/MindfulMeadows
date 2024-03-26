@@ -25,16 +25,25 @@ public class Write : Interaction
         {
             if (!isOpen)
             {
+                myWritingBox.enabled = true;
                 myWritingBox.OpenWritingBox(prompt);
             }
+        }
+        else
+        {
+            PlayerMovement.instance.canMove = true;
         }
 
     }
     public override void InteractionEnd()
-    {
+    {   
+
         isInteracting = false;
         myInteractionStage = 0;
         PlayerMovement.instance.canMove = true;
+
+        myWritingBox.enabled = false;
+
         if (badArea!=null)
         {
             badArea.treesPlantedHere++;
