@@ -10,7 +10,6 @@
         public Sprite[] stressSprites;
         public Image stressImage;
         public Text stressText;
-
     void Start()
     {
         currentStress = 0;
