@@ -9,6 +9,7 @@ TagManager:
   - dialogbox
   - writingbox
   - seedCounter
+  - TreeDialogBox
   layers:
   - Default
   - TransparentFX
