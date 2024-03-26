@@ -6,6 +6,25 @@ public class BadArea : MonoBehaviour
 {
     [HideInInspector] public int treesPlantedHere = 0;
     public int treesToClear;
+    [SerializeField] private GameObject unlockableObj;
+    private Unlockable myUnlockableScript;
+    private ParticleSystem myParticle;
+    private LineRenderer myline;
+
+    private void Start()
+    {
+
+        myParticle = GetComponentInChildren<ParticleSystem>();
+        myline = GetComponent<LineRenderer>();
+        float scale = GetComponent<Transform>().localScale.x;
+        var shape = myParticle.shape;
+        shape.radius = scale/2;
+        if (unlockableObj != null)
+        {
+            myUnlockableScript = unlockableObj.GetComponent<Unlockable>();
+            SetLineRenderer();
+        }
+    }
 
     private void Update()
     {
@@ -18,5 +37,20 @@ public class BadArea : MonoBehaviour
     public void ClearArea()
     {
         Destroy(gameObject);
+    }
+
+    private void OnDestroy()
+    {
+        if (myUnlockableScript!=null)
+        {
+            myUnlockableScript.ChangeState();
+        }
+    }
+    public void SetLineRenderer()
+    {
+        Vector3 startPos = transform.position;
+        Vector3 endPos = unlockableObj.transform.position;
+        Vector3[] linePositions = { startPos, endPos };
+        myline.SetPositions(linePositions);
     }
 }
