@@ -44,15 +44,19 @@ public class WritingBox : MonoBehaviour
         anim.SetBool("isActive", true);
     }
     public void CloseWritingBox()
-    {
-        Vector3 playerPos = GameObject.FindGameObjectWithTag("Player").transform.position;
+    {   
         myIputField.text = "";
-        Instantiate(textPlantPrefab, new Vector3(playerPos.x, playerPos.y-playerOffSet, playerPos.z), gameObject.transform.rotation);
+        
         anim.SetBool("isActive", false);
 
-        Inventory.seeds--;
-        seedCounter.UpdateText();
-
+        if (Inventory.seeds > 0)
+        {
+            Vector3 playerPos = GameObject.FindGameObjectWithTag("Player").transform.position;
+            Instantiate(textPlantPrefab, new Vector3(playerPos.x, playerPos.y - playerOffSet, playerPos.z), gameObject.transform.rotation);
+            Inventory.seeds--;
+            seedCounter.UpdateText();
+        }
+        
         myWrite.InteractionEnd();
     }
 }
