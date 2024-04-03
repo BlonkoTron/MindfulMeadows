@@ -1,81 +1,104 @@
-    using System.Collections;
-    using System.Collections.Generic;
-    using UnityEngine;
-    using UnityEngine.UI;
+using System.Collections;
+using UnityEngine;
+using UnityEngine.UI;
 
-    public class StressBar : MonoBehaviour
-    {
-        private float currentStress;
-        private readonly int maxStress = 100;
-        public Sprite[] stressSprites;
-        public Image stressImage;
-        public Text stressText;
+public class StressBar : MonoBehaviour
+{
+    private float currentStress;
+    public float oldStress;
+    private readonly int maxStress = 100;
+    public Animator stressAnimator;
+    public Image stressImage;
+    public Sprite[] stressSprites;
+
+    private int previousIndex = -1; // Track previous sprite index
+
     void Start()
     {
         currentStress = 0;
+        UpdateStressBar();
     }
+
     void Update()
     {
+        // Example: Increase stress over time
         AddStress(0.01f);
     }
+
     public void AddStress(float stress)
     {
+        float oldStress = currentStress;
         currentStress += stress;
-        if (currentStress > maxStress)
-        {
-            currentStress = maxStress;
-        }
-        UpdateStressBar();
-    }
-    public void RemoveStress(float stress)
-    {
-        currentStress -= stress;
-        if (currentStress < 0)
-        {
-            currentStress = 0;
-        }
-        UpdateStressBar();
-    }
-    public float GetCurrentStress()
-    {
-        UpdateStressBar();
-        return currentStress;
-    }
-    public void UpdateStressBar()
-    {
-        float ratio = (float)currentStress / (float)maxStress;
+        currentStress = Mathf.Clamp(currentStress, 0, maxStress);
 
-        int index = 0;
+        int currentIndex = Mathf.Clamp((int)(currentStress / maxStress * (stressSprites.Length - 1)), 0, stressSprites.Length - 1);
+        int oldIndex = Mathf.Clamp((int)(oldStress / maxStress * (stressSprites.Length - 1)), 0, stressSprites.Length - 1);
 
-        if (ratio >= 1f)
+        Debug.Log("Stress level changed: " + currentStress);
+        Debug.Log("Old stress level: " + oldStress);
+        // Check if stress level crossed certain thresholds
+        if (currentIndex != oldIndex)
         {
-            index = 4; // 100% stress
+            if (currentStress >= 100 && oldStress < 100)
+            {
+                PlayAnimation("75_to_100");
+            }
+            else if (currentStress >= 75 && oldStress < 75)
+            {
+                PlayAnimation("50_to_75");
+            }
+            else if (currentStress >= 50 && oldStress < 50)
+            {
+                PlayAnimation("25_to_50");
+            }
+            else if (currentStress >= 25 && oldStress < 25)
+            {
+                PlayAnimation("0_to_25");
+            }
+            else if (currentStress < 100 && oldStress >= 100)
+            {
+                PlayAnimation("100_to_75");
+            }
+            else if (currentStress < 75 && oldStress >= 75)
+            {
+                PlayAnimation("75_to_50");
+            }
+            else if (currentStress < 50 && oldStress >= 50)
+            {
+                PlayAnimation("50_to_25");
+            }
+            else if (currentStress < 25 && oldStress >= 25)
+            {
+                PlayAnimation("25_to_0");
+            }
         }
-        else if (ratio >= 0.75f)
-        {
-            index = 3; // 75-99% stress
-        }
-        else if (ratio >= 0.5f)
-        {
-            index = 2; // 50-74% stress
-        }
-        else if (ratio >= 0.25f)
-        {
-            index = 1; // 25-49% stress
-        }
-        else if (ratio >= 0.0f)
-        {
-            index = 0; // 0-25% stress
-        }
+    }
 
+    private void PlayAnimation(string animationName)
+    {
+        if (stressAnimator != null)
+        {
+            stressAnimator.Play(animationName);
+        }
+    }
+
+    private void UpdateStressSprites(int index)
+    {
+        // Update stress sprites based on index
         if (stressImage != null && stressSprites != null && stressSprites.Length > 0)
         {
             stressImage.sprite = stressSprites[index];
         }
+    }
 
-        if (stressText != null)
+    public void UpdateStressBar()
+    {
+        // Update stress sprites
+        int index = Mathf.Clamp((int)(currentStress / maxStress * (stressSprites.Length - 1)), 0, stressSprites.Length - 1);
+        if (index != previousIndex)
         {
-            stressText.text = "Stress: " + currentStress.ToString();
+            previousIndex = index;
+            UpdateStressSprites(index);
         }
     }
 }

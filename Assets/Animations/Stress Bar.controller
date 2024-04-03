@@ -32,7 +32,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: 25 to 50%
+  m_Name: 25_to_50
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -87,7 +87,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: 50 to 25%
+  m_Name: 50_to_25
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -171,8 +171,7 @@ AnimatorStateMachine:
   m_AnyStateTransitions: []
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
-  m_StateMachineBehaviours:
-  - {fileID: -576737359153653544}
+  m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 50, y: 20, z: 0}
   m_EntryPosition: {x: 130, y: 60, z: 0}
   m_ExitPosition: {x: 40, y: -30, z: 0}
@@ -185,7 +184,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: 75 to 50%
+  m_Name: 75_to_50
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -241,6 +240,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07ddb151f66694745a0e40f4d15a1142, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stressBar: {fileID: 0}
   IsHighStress: 0
   IsMediumStress: 0
   IsLowStress: 0
@@ -347,7 +347,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: 50 to 75%
+  m_Name: 50_to_75
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -375,7 +375,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: 75 to 100%
+  m_Name: 75_to_100
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -402,7 +402,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: 25 to 0%
+  m_Name: 25_to_0
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -428,7 +428,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: 0-25% Stress
+  m_Name: 0_to_25
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -531,7 +531,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: 100 to 75%
+  m_Name: 100_to_75
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []

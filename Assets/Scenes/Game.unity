@@ -1646,14 +1646,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d89fa64981ef77f4c8bed8c7dfc288e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stressAnimator: {fileID: 1510528870}
+  stressImage: {fileID: 1493154353}
+  stressText: {fileID: 307417952}
   stressSprites:
   - {fileID: 21300000, guid: 9ece49dc3f517b34cb3040f22a6596cb, type: 3}
   - {fileID: 21300000, guid: 7a52329fc0de59e449e6764ce0945577, type: 3}
   - {fileID: 21300000, guid: 4c2f716170224024c9c7249ed0d36408, type: 3}
   - {fileID: 21300000, guid: 72a2aa42ce21e4f46ae900a017a20538, type: 3}
   - {fileID: 21300000, guid: 9b911f45ab8c88e458ad82c0f87f0f93, type: 3}
-  stressImage: {fileID: 1493154353}
-  stressText: {fileID: 307417952}
 --- !u!95 &1510528870
 Animator:
   serializedVersion: 5
