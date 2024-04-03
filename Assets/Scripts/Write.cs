@@ -53,8 +53,13 @@ public class Write : Interaction
             Debug.Log("bad area reduced");
             badArea.treesPlantedHere++;
         }
+    }
+    public override void InteractionCancel()
+    {
+        isInteracting = false;
+        myInteractionStage = 0;
+        PlayerMovement.instance.canMove = true;
 
-
-
+        myWritingBox.enabled = false;
     }
 }

@@ -15,5 +15,7 @@ public abstract class Interaction : MonoBehaviour
         }
     }
     public abstract void InteractionStart();
+
+    public abstract void InteractionCancel();
     public abstract void InteractionEnd();
 }

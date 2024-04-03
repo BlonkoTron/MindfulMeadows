@@ -26,6 +26,21 @@ public class WritingBox : MonoBehaviour
     public void SubmitText()
     {
         myText = myIputField.text;
+        if (Inventory.seeds > 0)
+        {
+            Vector3 playerPos = GameObject.FindGameObjectWithTag("Player").transform.position;
+            Instantiate(textPlantPrefab, new Vector3(playerPos.x, playerPos.y - playerOffSet, playerPos.z), gameObject.transform.rotation);
+            Inventory.seeds--;
+            seedCounter.UpdateText();
+        }
+
+        myWrite.InteractionEnd();
+        CloseWritingBox();
+    }
+    public void CancelWriting()
+    {
+        CloseWritingBox();
+        myWrite.InteractionCancel();
     }
 
     public string GetSavedText()
@@ -48,15 +63,5 @@ public class WritingBox : MonoBehaviour
         myIputField.text = "";
         
         anim.SetBool("isActive", false);
-
-        if (Inventory.seeds > 0)
-        {
-            Vector3 playerPos = GameObject.FindGameObjectWithTag("Player").transform.position;
-            Instantiate(textPlantPrefab, new Vector3(playerPos.x, playerPos.y - playerOffSet, playerPos.z), gameObject.transform.rotation);
-            Inventory.seeds--;
-            seedCounter.UpdateText();
-        }
-        
-        myWrite.InteractionEnd();
     }
 }

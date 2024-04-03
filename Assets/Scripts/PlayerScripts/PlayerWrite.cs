@@ -48,5 +48,13 @@ public class PlayerWrite : Interaction
         myWritingBox.enabled = false;
         PlayerMovement.instance.canMove = true;
     }
+    public override void InteractionCancel()
+    {
+        isInteracting = false;
+        myInteractionStage = 0;
+        PlayerMovement.instance.canMove = true;
+
+        myWritingBox.enabled = false;
+    }
 
 }
