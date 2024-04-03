@@ -10,7 +10,7 @@ public class PlayerWrite : Interaction
     private WritingBox myWritingBox;
 
     private PlayerInteract playerInteract;
-    private BadArea badArea=null;
+    
     private void Start()
     {
         myWritingBox = GameObject.FindGameObjectWithTag("writingbox").GetComponent<WritingBox>();

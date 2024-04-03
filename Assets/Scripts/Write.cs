@@ -8,16 +8,16 @@ public class Write : Interaction
     [SerializeField] private string prompt;
     private bool isOpen = false;
     private WritingBox myWritingBox;
-    private BadArea badArea=null;
+    public BadArea badArea;
 
     private void Start()
     {
         myWritingBox = GameObject.FindGameObjectWithTag("writingbox").GetComponent<WritingBox>();
         myWritingBox.myWrite = this.GetComponent<Write>();
-        if(GetComponent<BadArea>()!=null)
-        {
-            badArea = GetComponent<BadArea>();
-        }
+
+        Debug.Log("bad area added to interaction zone");
+        badArea = GetComponent<BadArea>();
+        
     }
     public override void InteractionStart()
     {
@@ -45,9 +45,12 @@ public class Write : Interaction
 
         myWritingBox.enabled = false;
 
-        if (badArea!=null)
-        {
-            badArea.treesPlantedHere++;
-        }
+        Debug.Log("Interaction End Bliver kaldt");
+
+
+        Debug.Log("bad area reduced");
+        badArea.treesPlantedHere++;
+
+
     }
 }
