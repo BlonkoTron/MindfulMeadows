@@ -25,6 +25,7 @@ public class Write : Interaction
         {
             if (!isOpen)
             {
+                Debug.Log(" Write er sej og jeg bliver kaldt");
                 myWritingBox.enabled = true;
                 myWritingBox.OpenWritingBox(prompt);
             }
