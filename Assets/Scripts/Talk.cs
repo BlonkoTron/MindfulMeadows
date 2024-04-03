@@ -58,4 +58,11 @@ public class Talk : Interaction
         myInteractionStage = 0;
         txtBox.ToggleBox(false);
     }
+    public override void InteractionCancel()
+    {
+        PlayerMovement.instance.canMove = true;
+        isInteracting = false;
+        myInteractionStage = 0;
+        txtBox.ToggleBox(false);
+    }
 }

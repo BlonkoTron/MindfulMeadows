@@ -13,7 +13,6 @@ public class BadArea : MonoBehaviour
 
     private void Start()
     {
-
         myParticle = GetComponentInChildren<ParticleSystem>();
         myline = GetComponent<LineRenderer>();
         float scale = GetComponent<Transform>().localScale.x;
