@@ -11,8 +11,6 @@ public class StressBar : MonoBehaviour
     public Image stressImage;
     public Sprite[] stressSprites;
 
-    private int previousIndex = -1; // Track previous sprite index
-
     void Start()
     {
         currentStress = 0;
@@ -22,56 +20,28 @@ public class StressBar : MonoBehaviour
     void Update()
     {
         // Example: Increase stress over time
-        AddStress(0.01f);
+        AddStress(0.1f);
     }
 
     public void AddStress(float stress)
     {
-        float oldStress = currentStress;
+        oldStress = currentStress;
         currentStress += stress;
         currentStress = Mathf.Clamp(currentStress, 0, maxStress);
 
-        int currentIndex = Mathf.Clamp((int)(currentStress / maxStress * (stressSprites.Length - 1)), 0, stressSprites.Length - 1);
-        int oldIndex = Mathf.Clamp((int)(oldStress / maxStress * (stressSprites.Length - 1)), 0, stressSprites.Length - 1);
+        // Check if stress level crossed certain thresholds and play appropriate animations
+        CheckStressThresholds();
+        //Debug.Log("Current stress: " + currentStress);
+    }
 
-        Debug.Log("Stress level changed: " + currentStress);
-        Debug.Log("Old stress level: " + oldStress);
-        // Check if stress level crossed certain thresholds
-        if (currentIndex != oldIndex)
-        {
-            if (currentStress >= 100 && oldStress < 100)
-            {
-                PlayAnimation("75_to_100");
-            }
-            else if (currentStress >= 75 && oldStress < 75)
-            {
-                PlayAnimation("50_to_75");
-            }
-            else if (currentStress >= 50 && oldStress < 50)
-            {
-                PlayAnimation("25_to_50");
-            }
-            else if (currentStress >= 25 && oldStress < 25)
-            {
-                PlayAnimation("0_to_25");
-            }
-            else if (currentStress < 100 && oldStress >= 100)
-            {
-                PlayAnimation("100_to_75");
-            }
-            else if (currentStress < 75 && oldStress >= 75)
-            {
-                PlayAnimation("75_to_50");
-            }
-            else if (currentStress < 50 && oldStress >= 50)
-            {
-                PlayAnimation("50_to_25");
-            }
-            else if (currentStress < 25 && oldStress >= 25)
-            {
-                PlayAnimation("25_to_0");
-            }
-        }
+    public void RemoveStress(float stress)
+    {
+        oldStress = currentStress;
+        currentStress -= stress;
+        currentStress = Mathf.Clamp(currentStress, 0, maxStress);
+
+        // Check if stress level crossed certain thresholds and play appropriate animations
+        CheckStressThresholds();
     }
 
     private void PlayAnimation(string animationName)
@@ -79,26 +49,73 @@ public class StressBar : MonoBehaviour
         if (stressAnimator != null)
         {
             stressAnimator.Play(animationName);
+            StartCoroutine(UpdateSpriteAfterAnimation(animationName)); // Start a coroutine to update the sprite after animation finishes
         }
     }
 
-    private void UpdateStressSprites(int index)
+    private IEnumerator UpdateSpriteAfterAnimation(string animationName)
     {
-        // Update stress sprites based on index
+        yield return new WaitForSeconds(stressAnimator.GetCurrentAnimatorStateInfo(0).length); // Wait for the animation to finish
+        UpdateStressBar(); // Update stress bar visuals after animation finishes
+    }
+
+    private void UpdateStressBar()
+    {
         if (stressImage != null && stressSprites != null && stressSprites.Length > 0)
         {
-            stressImage.sprite = stressSprites[index];
+            // Calculate the index of the sprite based on the current stress level
+            int spriteIndex = Mathf.FloorToInt(currentStress / maxStress * (stressSprites.Length - 1));
+            // Ensure the sprite index stays within bounds
+            spriteIndex = Mathf.Clamp(spriteIndex, 0, stressSprites.Length - 1);
+            // Set the sprite to the appropriate one based on the stress level
+            stressImage.sprite = stressSprites[spriteIndex];
+
+            // Debug.Log to verify if the sprite has changed
+            Debug.Log("Stress sprite changed to: " + stressSprites[spriteIndex]);
         }
     }
 
-    public void UpdateStressBar()
+    private void CheckStressThresholds()
     {
-        // Update stress sprites
-        int index = Mathf.Clamp((int)(currentStress / maxStress * (stressSprites.Length - 1)), 0, stressSprites.Length - 1);
-        if (index != previousIndex)
+        if (currentStress == 100 && oldStress < 100)
         {
-            previousIndex = index;
-            UpdateStressSprites(index);
+            PlayAnimation("75_to_100");
+            Debug.Log("75_to_100 animation played!");
+        }
+        else if (currentStress >= 75 && oldStress < 75)
+        {
+            PlayAnimation("50_to_75");
+            Debug.Log("50_to_75 animation played!");
+        }
+        else if (currentStress >= 50 && oldStress < 50)
+        {
+            PlayAnimation("25_to_50");
+            Debug.Log("25_to_50 animation played!");
+        }
+        else if (currentStress >= 25 && oldStress < 25)
+        {
+            PlayAnimation("0_to_25");
+            Debug.Log("0_to_25 animation played!");
+        }
+        else if (currentStress < 100 && oldStress == 100)
+        {
+            PlayAnimation("100_to_75");
+            Debug.Log("100_to_75 animation played!");
+        }
+        else if (currentStress < 75 && oldStress >= 75)
+        {
+            PlayAnimation("75_to_50");
+            Debug.Log("75_to_50 animation played!");
+        }
+        else if (currentStress < 50 && oldStress >= 50)
+        {
+            PlayAnimation("50_to_25");
+            Debug.Log("50_to_25 animation played!");
+        }
+        else if (currentStress < 25 && oldStress >= 25)
+        {
+            PlayAnimation("25_to_0");
+            Debug.Log("25_to_0 animation played!");
         }
     }
 }
