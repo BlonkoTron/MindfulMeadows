@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Movementstuff")]
     [SerializeField] private float maxSpeed = 6f;
     [SerializeField] private float jumpForce = 6f;
-    [SerializeField] private float rotationSpeed = 2f;
+    [SerializeField] private float rotationSpeed = 500f;
     [SerializeField] private float jumpGracePeriod = 0.1f;
     [SerializeField] private float accelerationTimeToMax = 2.5f;
     [SerializeField] private float deccelerationTimeToZero = 0.8f;
@@ -69,13 +69,6 @@ public class PlayerMovement : MonoBehaviour
 
         if (movement != Vector3.zero)
         {   
-
-            // Here we calculate the rotation of the character to see what direction it should be facing
-            // we are also rotating it
-            Quaternion toRoataion = Quaternion.LookRotation(movement, Vector3.up);
-
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRoataion, rotationSpeed * Time.deltaTime);
-
             // Calculation of the current speed bu the acceleration rate
             //mathf.min is used to take the smaller value of either currentSpeed or maxSpeed since we don't want currentSpeed if its larger than maxSpeed
             currentSpeed += accelRate * Time.deltaTime;
@@ -97,6 +90,17 @@ public class PlayerMovement : MonoBehaviour
 
         velocity = movement + direction * magnitude;
         
+        if (movement != Vector3.zero)
+        {
+
+            // Here we calculate the rotation of the character to see what direction it should be facing
+            // we are also rotating it
+
+            Quaternion toRoataion = Quaternion.LookRotation(direction, Vector3.up);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRoataion, rotationSpeed * Time.deltaTime);
+        }
+
+
 #endregion
 
 #region Calculating Jump
