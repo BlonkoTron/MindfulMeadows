@@ -10,7 +10,7 @@ public class PlayerWrite : Interaction
     private WritingBox myWritingBox;
 
     private PlayerInteract playerInteract;
-
+    
     private void Start()
     {
         myWritingBox = GameObject.FindGameObjectWithTag("writingbox").GetComponent<WritingBox>();
@@ -24,6 +24,9 @@ public class PlayerWrite : Interaction
             if (Inventory.seeds > 0)
             {
                 InteractionStart();
+
+                Debug.Log("Jeg er playerWrite og jeg bliver kaldt");
+
                 PlayerMovement.instance.canMove = false;
             }
             
@@ -45,4 +48,13 @@ public class PlayerWrite : Interaction
         myWritingBox.enabled = false;
         PlayerMovement.instance.canMove = true;
     }
+    public override void InteractionCancel()
+    {
+        isInteracting = false;
+        myInteractionStage = 0;
+        PlayerMovement.instance.canMove = true;
+
+        myWritingBox.enabled = false;
+    }
+
 }

@@ -28,9 +28,7 @@ public class TreeTalk : Interaction
 
             InteractionEnd();
         }
-        
-            
-        
+
     }
 
     public override void InteractionStart()
@@ -42,6 +40,13 @@ public class TreeTalk : Interaction
     }
 
     public override void InteractionEnd()
+    {
+        txtBox.SetNewText(writtenText, false);
+        txtBox.ToggleBox(false);
+        isInteracting = false;
+        PlayerMovement.instance.canMove = true;
+    }
+    public override void InteractionCancel()
     {
         txtBox.SetNewText(writtenText, false);
         txtBox.ToggleBox(false);

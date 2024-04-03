@@ -8,16 +8,17 @@ public class Write : Interaction
     [SerializeField] private string prompt;
     private bool isOpen = false;
     private WritingBox myWritingBox;
-    private BadArea badArea=null;
+    public BadArea badArea;
 
     private void Start()
     {
         myWritingBox = GameObject.FindGameObjectWithTag("writingbox").GetComponent<WritingBox>();
         myWritingBox.myWrite = this.GetComponent<Write>();
-        if(GetComponent<BadArea>()!=null)
-        {
-            badArea = GetComponent<BadArea>();
-        }
+
+        Debug.Log("bad area added to interaction zone");
+        badArea = GetComponent<BadArea>();
+
+        
     }
     public override void InteractionStart()
     {
@@ -25,6 +26,7 @@ public class Write : Interaction
         {
             if (!isOpen)
             {
+                Debug.Log(gameObject.name + " Write er sej og jeg bliver kaldt");
                 myWritingBox.enabled = true;
                 myWritingBox.OpenWritingBox(prompt);
             }
@@ -44,9 +46,20 @@ public class Write : Interaction
 
         myWritingBox.enabled = false;
 
-        if (badArea!=null)
+        Debug.Log("Interaction End Bliver kaldt");
+
+        if (badArea != null)
         {
+            Debug.Log("bad area reduced");
             badArea.treesPlantedHere++;
         }
+    }
+    public override void InteractionCancel()
+    {
+        isInteracting = false;
+        myInteractionStage = 0;
+        PlayerMovement.instance.canMove = true;
+
+        myWritingBox.enabled = false;
     }
 }
