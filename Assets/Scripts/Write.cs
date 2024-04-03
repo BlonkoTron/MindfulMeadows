@@ -17,6 +17,7 @@ public class Write : Interaction
 
         Debug.Log("bad area added to interaction zone");
         badArea = GetComponent<BadArea>();
+
         
     }
     public override void InteractionStart()
@@ -25,7 +26,7 @@ public class Write : Interaction
         {
             if (!isOpen)
             {
-                Debug.Log(" Write er sej og jeg bliver kaldt");
+                Debug.Log(gameObject.name + " Write er sej og jeg bliver kaldt");
                 myWritingBox.enabled = true;
                 myWritingBox.OpenWritingBox(prompt);
             }
@@ -47,9 +48,12 @@ public class Write : Interaction
 
         Debug.Log("Interaction End Bliver kaldt");
 
+        if (badArea != null)
+        {
+            Debug.Log("bad area reduced");
+            badArea.treesPlantedHere++;
+        }
 
-        Debug.Log("bad area reduced");
-        badArea.treesPlantedHere++;
 
 
     }
