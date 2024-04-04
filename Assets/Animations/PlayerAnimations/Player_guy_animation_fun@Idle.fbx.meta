@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 157fb4c0808df2446abcd6fa01612304
+guid: 979b9114e0ef8d5459d344909277ccea
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -33,7 +33,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Armature|ArmatureAction
+      name: Idle
       takeName: Armature|ArmatureAction
       internalID: 4781951162920444690
       firstFrame: 0
@@ -62,11 +62,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Walking
+      name: JustStanding
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
-      lastFrame: 32
+      lastFrame: 59
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -74,7 +74,7 @@ ModelImporter:
       loop: 0
       hasAdditiveReferencePose: 0
       loopTime: 1
-      loopBlend: 0
+      loopBlend: 1
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0

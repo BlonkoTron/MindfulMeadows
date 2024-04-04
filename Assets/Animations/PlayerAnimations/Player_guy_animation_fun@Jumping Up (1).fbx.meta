@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 157fb4c0808df2446abcd6fa01612304
+guid: 66762b59671ae7546aa6999bcb9e561a
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -33,10 +33,10 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Armature|ArmatureAction
+      name: Jumping Up
       takeName: Armature|ArmatureAction
       internalID: 4781951162920444690
-      firstFrame: 0
+      firstFrame: 10
       lastFrame: 50
       wrapMode: 0
       orientationOffsetY: 0
@@ -62,18 +62,18 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Walking
+      name: Boing
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
-      lastFrame: 32
+      lastFrame: 28
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0

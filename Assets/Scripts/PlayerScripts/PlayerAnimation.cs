@@ -1,31 +1,60 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerAnimation : MonoBehaviour
 {
     private Vector3 lastPosition;
     private Animator animator;
 
+    private Vector3 movement;
+    private CharacterController controller;
+
     // Start is called before the first frame update
     void Start()
     {
         lastPosition = transform.position;
         animator = GetComponent<Animator>();
+        controller = GetComponent<CharacterController>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnMovement(InputValue value)
     {
-        if (transform.position != lastPosition)
+        movement = value.Get<Vector3>();
+
+        Debug.Log(movement);
+
+        if (movement != Vector3.zero)
         {
-            animator.SetBool("Is moving", true);
+            animator.SetBool("IsMoving", true);
         }
         else
         {
-            animator.SetBool("Is moving", false);
+            animator.SetBool("IsMoving", false);
         }
-
-        lastPosition = transform.position;
     }
+
+    private void OnJump(InputValue value)
+    {
+           animator.SetBool("IsJumping", true);
+           
+    }
+
+    void Update() 
+    {
+        if (controller.isGrounded)
+        {
+            animator.SetBool("IsGrounded", true);
+            animator.SetBool("IsFalling", false);
+            
+        }
+        else if (!controller.isGrounded)
+        {
+            animator.SetBool("IsGrounded", false);
+            animator.SetBool("IsFalling", true);
+            animator.SetBool("IsJumping", false);
+        }
+    }
+
 }
