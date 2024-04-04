@@ -1606,7 +1606,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: bd941c6961714584bb72b461cd76dd05, type: 3}
       propertyPath: m_Name
-      value: Floating island2 1 (1)
+      value: World2
       objectReference: {fileID: 0}
     - target: {fileID: 7342855658915744305, guid: bd941c6961714584bb72b461cd76dd05, type: 3}
       propertyPath: m_Name
@@ -1637,7 +1637,7 @@ GameObject:
   - component: {fileID: 1258886783}
   - component: {fileID: 1258886782}
   m_Layer: 0
-  m_Name: World2
+  m_Name: World2 Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
