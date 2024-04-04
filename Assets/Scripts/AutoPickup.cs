@@ -6,7 +6,6 @@ public class AutoPickup : MonoBehaviour
 {
     [Range(0.1f, 5)]
     [SerializeField] private float pickupRange;
-    [Range(1, 20)]
     [SerializeField] private float pickupSpeed;
     private float pickupCollisionRange = 0.1f;
     private Transform player;

@@ -29,7 +29,14 @@ public class WritingBox : MonoBehaviour
             SubmitText();
         }
     }
-    
+    void OnCancel(InputValue input)
+    {
+        if (isOpen)
+        {
+            CancelWriting();
+        }
+    }
+
     public void SubmitText()
     {
         myText = myIputField.text;

@@ -1,5 +1,5 @@
 {
-    "name": "WritingControls",
+    "name": "MenuControls",
     "maps": [
         {
             "name": "Writing",
@@ -13,17 +13,37 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Cancel",
+                    "type": "Button",
+                    "id": "0632a6de-e7f2-4462-89e0-01655f79b3c0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
                 {
                     "name": "",
-                    "id": "1aa1fd0f-962a-43c0-9809-81734808ba33",
+                    "id": "a8fc7fe2-00b6-483c-94df-41d0b353fcbc",
                     "path": "<Keyboard>/enter",
-                    "interactions": "",
+                    "interactions": "MultiTap",
                     "processors": "",
                     "groups": "",
                     "action": "Confirm",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "40a86686-55b2-4ff6-90d2-ae1e592c6ee7",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Cancel",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

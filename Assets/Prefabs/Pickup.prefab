@@ -69,7 +69,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickupRange: 2.5
-  pickupSpeed: 20
+  pickupSpeed: 30
 --- !u!114 &2961581979246879532
 MonoBehaviour:
   m_ObjectHideFlags: 0
