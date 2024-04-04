@@ -47,11 +47,13 @@ public class WritingBox : MonoBehaviour
 
     public void OpenWritingBox()
     {
+        myIputField.text = "";
         promptText.text = "";
         anim.SetBool("isActive",true);
     }
     public void OpenWritingBox(string prompt)
     {
+        myIputField.text = "";
         promptText.text = prompt;
         anim.SetBool("isActive", true);
     }
