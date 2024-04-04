@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
@@ -39,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
     //private components
     private Rigidbody rb;
     private CharacterController controller;
+    private PlayerInteract playerInteract;
 
     //GameObjects
     private GameObject mainCamera;
@@ -52,6 +54,7 @@ public class PlayerMovement : MonoBehaviour
         instance = this;
         rb = GetComponent<Rigidbody>();
         controller = GetComponent<CharacterController>();
+        playerInteract = GetComponent<PlayerInteract>();
 
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         cameraTransform = mainCamera.transform;
@@ -135,7 +138,6 @@ public class PlayerMovement : MonoBehaviour
 
     void OnMovement(InputValue input)
     {   
-
         // inputsystem for movement is our input
         if (canMove)
         {
@@ -145,9 +147,6 @@ public class PlayerMovement : MonoBehaviour
         {
             movement = Vector3.zero;
         }
-
-        
-
     }
 
     void OnJump(InputValue input)

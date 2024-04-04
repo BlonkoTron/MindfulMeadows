@@ -24,6 +24,9 @@ public class Write : Interaction
                 myWritingBox.enabled = true;
                 myWritingBox.OpenWritingBox(prompt);
                 myWritingBox.myWrite = this.GetComponent<Write>();
+
+                CameraController.instance.StopCamera();
+
             }
         }
         else
@@ -38,6 +41,7 @@ public class Write : Interaction
         isInteracting = false;
         myInteractionStage = 0;
         PlayerMovement.instance.canMove = true;
+        CameraController.instance.StartCamera();
 
         myWritingBox.enabled = false;
 

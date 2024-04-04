@@ -1,0 +1,54 @@
+{
+    "name": "MenuControls",
+    "maps": [
+        {
+            "name": "Writing",
+            "id": "1fe3bd2e-68ce-4696-b45d-b7a747ff7f73",
+            "actions": [
+                {
+                    "name": "Confirm",
+                    "type": "Button",
+                    "id": "1a49e78c-7a53-4ecc-9d9e-b18064c30aea",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Cancel",
+                    "type": "Button",
+                    "id": "0632a6de-e7f2-4462-89e0-01655f79b3c0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "a8fc7fe2-00b6-483c-94df-41d0b353fcbc",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "MultiTap",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Confirm",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "40a86686-55b2-4ff6-90d2-ae1e592c6ee7",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Cancel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
