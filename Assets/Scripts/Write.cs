@@ -27,6 +27,7 @@ public class Write : Interaction
             if (!isOpen)
             {
                 Debug.Log(gameObject.name + " Write er sej og jeg bliver kaldt");
+                CameraController.instance.StopCamera();
                 myWritingBox.enabled = true;
                 myWritingBox.OpenWritingBox(prompt);
             }
@@ -43,6 +44,7 @@ public class Write : Interaction
         isInteracting = false;
         myInteractionStage = 0;
         PlayerMovement.instance.canMove = true;
+        CameraController.instance.StartCamera();
 
         myWritingBox.enabled = false;
 
