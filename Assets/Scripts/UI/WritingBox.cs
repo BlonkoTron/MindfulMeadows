@@ -2,19 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using UnityEngine.InputSystem;
 
 public class WritingBox : MonoBehaviour
 {
     [SerializeField] GameObject textPlantPrefab;
-
     private string myText;
     [SerializeField] private TMP_Text promptText;
     private TMP_InputField myIputField;
     private Animator anim;
     [HideInInspector] public Write myWrite;
     private SeedCounter seedCounter;
-
     private float playerOffSet = 0.4f;
 
     private void Start()
@@ -61,7 +58,6 @@ public class WritingBox : MonoBehaviour
     public void CloseWritingBox()
     {   
         myIputField.text = "";
-        
         anim.SetBool("isActive", false);
     }
 }
