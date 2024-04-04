@@ -12,12 +12,8 @@ public class Write : Interaction
 
     private void Start()
     {
-        myWritingBox = GameObject.FindGameObjectWithTag("writingbox").GetComponent<WritingBox>();
-        myWritingBox.myWrite = this.GetComponent<Write>();
-
         myBadArea = this.GetComponent<BadArea>();
-
-        
+        myWritingBox = GameObject.FindGameObjectWithTag("writingbox").GetComponent<WritingBox>();
     }
     public override void InteractionStart()
     {
@@ -27,6 +23,7 @@ public class Write : Interaction
             {
                 myWritingBox.enabled = true;
                 myWritingBox.OpenWritingBox(prompt);
+                myWritingBox.myWrite = this.GetComponent<Write>();
             }
         }
         else

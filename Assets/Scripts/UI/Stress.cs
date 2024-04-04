@@ -1,25 +1,49 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-
 
 public class Stress : MonoBehaviour
 {
-    public Slider stressSlider;
-    public Gradient stressGradient;
-    public Image fill;
+    public int MaxStress = 100;
+    public int CurrentStress;
+    public int StartingStress = 0;
 
-    public void SetMaxStress(int stress)
+    public StressBar stressBar;
+
+    void Start()
     {
-        stressSlider.maxValue = stress;
-        stressSlider.value = stress;
-
-        fill.color = stressGradient.Evaluate(1f);
+        CurrentStress = StartingStress;
+        stressBar.SetStress(CurrentStress);
+        stressBar.SetMaxStress(MaxStress);
     }
-    public void SetStress(int stress)
+    void Update()
     {
-        stressSlider.value = stress;
-        fill.color = stressGradient.Evaluate(stressSlider.normalizedValue);
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            RecieveStress(10);
+        }
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            ReduceStress(10);
+        }
+    }
+
+    void RecieveStress(int stress)
+    {
+        CurrentStress += stress;
+        stressBar.SetStress(CurrentStress);
+        if (CurrentStress > MaxStress)
+        {
+            CurrentStress = MaxStress;
+        }
+    }
+    void ReduceStress(int stress)
+    {
+        CurrentStress -= stress;
+        stressBar.SetStress(CurrentStress);
+        if (CurrentStress < 0)
+        {
+            CurrentStress = 0;
+        }
     }
 }
