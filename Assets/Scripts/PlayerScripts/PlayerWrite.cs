@@ -51,5 +51,13 @@ public class PlayerWrite : Interaction
         PlayerMovement.instance.canMove = true;
         CameraController.instance.StartCamera();
     }
+    public override void InteractionCancel()
+    {
+        isInteracting = false;
+        myInteractionStage = 0;
+        PlayerMovement.instance.canMove = true;
+
+        myWritingBox.enabled = false;
+    }
 
 }

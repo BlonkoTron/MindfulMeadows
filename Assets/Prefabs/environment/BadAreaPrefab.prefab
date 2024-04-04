@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 1446267849257839157}
   - component: {fileID: 5894445078346995411}
   - component: {fileID: 8490031877765372846}
-  - component: {fileID: 4538999622003882703}
   - component: {fileID: 8196528453340663701}
   - component: {fileID: 4079874382934387093}
   m_Layer: 0
@@ -67,7 +66,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prompt: Skriv noget sjovt
-  badArea: {fileID: 0}
 --- !u!33 &5894445078346995411
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -118,19 +116,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &4538999622003882703
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4151954569773228227}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 488314c58d3fe644689d32e6e8f303f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  offsetMovement: {x: -0.002, y: 0}
 --- !u!135 &8196528453340663701
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -160,7 +145,7 @@ LineRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4151954569773228227}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
