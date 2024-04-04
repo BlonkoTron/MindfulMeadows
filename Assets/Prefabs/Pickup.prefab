@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2961581979246879532}
   - component: {fileID: 264968709093543757}
   m_Layer: 0
-  m_Name: PickupCube
+  m_Name: Pickup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -68,8 +68,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb59ae1c40e2524080be552c345a42a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickupRange: 1.5
-  pickupSpeed: 10
+  pickupRange: 2.5
+  pickupSpeed: 30
 --- !u!114 &2961581979246879532
 MonoBehaviour:
   m_ObjectHideFlags: 0

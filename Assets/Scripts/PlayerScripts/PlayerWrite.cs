@@ -28,6 +28,8 @@ public class PlayerWrite : Interaction
                 Debug.Log("Jeg er playerWrite og jeg bliver kaldt");
 
                 PlayerMovement.instance.canMove = false;
+                CameraController.instance.StopCamera();
+
             }
             
         }
@@ -47,6 +49,7 @@ public class PlayerWrite : Interaction
         myInteractionStage = 0;
         myWritingBox.enabled = false;
         PlayerMovement.instance.canMove = true;
+        CameraController.instance.StartCamera();
     }
     public override void InteractionCancel()
     {
