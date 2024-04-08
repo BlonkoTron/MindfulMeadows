@@ -7,12 +7,13 @@ public class TreeGrow : MonoBehaviour
 
     [SerializeField] private GameObject treeText;
     [SerializeField] private float growRate;
+    [SerializeField] private GameObject leafParticle;
 
 
     private void OnEnable()
     {
         treeText.GetComponent<Billboard>().enabled = false;
-       
+        Instantiate(leafParticle, this.transform);
     }
 
     private void FixedUpdate()

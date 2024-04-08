@@ -484,7 +484,7 @@ PrefabInstance:
     - target: {fileID: 7787815073166061427, guid: 624cd7f2347d2418ba9a06872b22bedb, type: 3}
       propertyPath: musicClips.Array.data[2].clip
       value: 
-      objectReference: {fileID: 8300000, guid: 084bc42dfea5d4b4080ad58500f140fb, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 7787815073166061427, guid: 624cd7f2347d2418ba9a06872b22bedb, type: 3}
       propertyPath: musicClips.Array.data[2].name
       value: music_meditative

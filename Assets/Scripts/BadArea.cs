@@ -21,6 +21,7 @@ public class BadArea : MonoBehaviour
         if (unlockableObj != null)
         {
             myUnlockableScript = unlockableObj.GetComponent<Unlockable>();
+            myUnlockableScript.connectedObjects++;
             SetLineRenderer();
         }
     }
