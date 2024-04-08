@@ -10,6 +10,7 @@ TagManager:
   - writingbox
   - seedCounter
   - TreeDialogBox
+  - BadArea
   layers:
   - Default
   - TransparentFX
