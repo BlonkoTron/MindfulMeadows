@@ -38,24 +38,33 @@ public class AudioManager : MonoBehaviour
             s.source.clip = s.clip;
             s.source.volume = s.volume;
         }
-
-
     }
 
     private void Start()
     {
-        PlayBackgroundMusic();
         timer = 0f;
-
+        Debug.Log("Playing start music...");
+        Play("music_active");
     }
 
     private void FixedUpdate()
     {
-        timer += Time.deltaTime;
+        timer += Time.fixedDeltaTime;
 
-        if (timer >= 30)
+        if (timer % 5 == 0)
         {
-            PlayBackgroundMusic();
+            Debug.Log($"{timer}s have passed, initiating check...");
+
+            if (currentBGMusic.source != null && currentBGMusic.source.isPlaying)
+            {
+                Debug.Log($"Clip {currentBGMusic.name} is playing, skipping initialisation.");
+                return;
+            }
+            else
+            {
+                Debug.Log("Nothing playing, starting new clip...");
+                Play(musicClips[UnityEngine.Random.Range(0, musicClips.Length)]);
+            }
         }
     }
 
@@ -67,11 +76,18 @@ public class AudioManager : MonoBehaviour
             Debug.LogWarning($"Sound {name} not found.");
             return;
         }
+        currentBGMusic = s;
         s.source.Play();
     }
 
     public void Play(Sound s)
     {
+        if (s.clip == null)
+        {
+            Debug.LogWarning($"Sound {s.name} not found.");
+            return;
+        }
+        currentBGMusic = s;
         s.source.Play();
     }
 
@@ -81,6 +97,7 @@ public class AudioManager : MonoBehaviour
         //Debug.Log("Trying to play BG music...");
         //maybe add some fancy code that makes the appropriate theme play for
         //different situations
+
         if (currentBGMusic == null)
         {
             currentBGMusic = musicClips[UnityEngine.Random.Range(0, musicClips.Length)];
