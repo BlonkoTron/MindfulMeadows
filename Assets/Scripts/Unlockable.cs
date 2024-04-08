@@ -5,6 +5,7 @@ using UnityEngine;
 public class Unlockable : MonoBehaviour
 {
     public Transform lineEndPoint;
+    public int connectedObjects;
 
     private void Awake()
     {
@@ -15,6 +16,12 @@ public class Unlockable : MonoBehaviour
     }
     public void ChangeState()
     {
-        Debug.Log("area cleared");
+        connectedObjects--;
+        if (connectedObjects==0)
+        {
+            Debug.Log("area cleared");
+
+            Destroy(gameObject);
+        }
     }
 }
