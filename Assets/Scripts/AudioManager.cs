@@ -38,23 +38,22 @@ public class AudioManager : MonoBehaviour
             s.source.clip = s.clip;
             s.source.volume = s.volume;
         }
-
-
     }
 
     private void Start()
     {
-        PlayBackgroundMusic();
         timer = 0f;
-
+        Debug.Log("Playing start music...");
+        Play("music_active");
     }
 
     private void FixedUpdate()
     {
-        timer += Time.deltaTime;
+        timer += Time.fixedDeltaTime;
 
         if (timer >= 30)
         {
+            Debug.Log($"{timer}s have passed, trying to play...");
             PlayBackgroundMusic();
         }
     }
@@ -72,6 +71,11 @@ public class AudioManager : MonoBehaviour
 
     public void Play(Sound s)
     {
+        if (s.clip == null)
+        {
+            Debug.LogWarning($"Sound {s.name} not found.");
+            return;
+        }
         s.source.Play();
     }
 
