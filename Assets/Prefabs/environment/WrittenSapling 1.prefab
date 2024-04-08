@@ -433,6 +433,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   treeText: {fileID: 393641318497155322}
   growRate: 0.1
+  leafParticle: {fileID: 1290654235880073227, guid: 4d87d3e51f45f8349a0883203d2a78ec, type: 3}
 --- !u!114 &4727633411545004519
 MonoBehaviour:
   m_ObjectHideFlags: 0
