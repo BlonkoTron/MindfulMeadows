@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Stress : MonoBehaviour
@@ -18,6 +19,11 @@ public class Stress : MonoBehaviour
     }
     void Update()
     {
+        if (OnTriggerEnter)
+        {
+            RecieveStress(10);
+        }
+        /*
         if (Input.GetKeyDown(KeyCode.Space))
         {
             RecieveStress(10);
@@ -26,6 +32,7 @@ public class Stress : MonoBehaviour
         {
             ReduceStress(10);
         }
+        */
     }
 
     void RecieveStress(int stress)
