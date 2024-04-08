@@ -51,10 +51,20 @@ public class AudioManager : MonoBehaviour
     {
         timer += Time.fixedDeltaTime;
 
-        if (timer >= 30)
+        if (timer % 5 == 0)
         {
-            Debug.Log($"{timer}s have passed, trying to play...");
-            PlayBackgroundMusic();
+            Debug.Log($"{timer}s have passed, initiating check...");
+
+            if (currentBGMusic.source != null && currentBGMusic.source.isPlaying)
+            {
+                Debug.Log($"Clip {currentBGMusic.name} is playing, skipping initialisation.");
+                return;
+            }
+            else
+            {
+                Debug.Log("Nothing playing, starting new clip...");
+                Play(musicClips[UnityEngine.Random.Range(0, musicClips.Length)]);
+            }
         }
     }
 
@@ -66,6 +76,7 @@ public class AudioManager : MonoBehaviour
             Debug.LogWarning($"Sound {name} not found.");
             return;
         }
+        currentBGMusic = s;
         s.source.Play();
     }
 
@@ -76,6 +87,7 @@ public class AudioManager : MonoBehaviour
             Debug.LogWarning($"Sound {s.name} not found.");
             return;
         }
+        currentBGMusic = s;
         s.source.Play();
     }
 
@@ -85,6 +97,7 @@ public class AudioManager : MonoBehaviour
         //Debug.Log("Trying to play BG music...");
         //maybe add some fancy code that makes the appropriate theme play for
         //different situations
+
         if (currentBGMusic == null)
         {
             currentBGMusic = musicClips[UnityEngine.Random.Range(0, musicClips.Length)];
