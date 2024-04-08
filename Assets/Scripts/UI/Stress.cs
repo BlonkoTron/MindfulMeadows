@@ -22,7 +22,7 @@ public class Stress : MonoBehaviour
         {
             RecieveStress(10);
         }
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.Backspace))
         {
             ReduceStress(10);
         }
