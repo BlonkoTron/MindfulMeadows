@@ -21,4 +21,5 @@ public class StressBar : MonoBehaviour
         stressSlider.value = stress;
         fill.color = stressGradient.Evaluate(stressSlider.normalizedValue);
     }
+
 }
