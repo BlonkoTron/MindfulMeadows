@@ -4,13 +4,15 @@ using UnityEngine;
 public class Stress : MonoBehaviour
 {
     public int MaxStress = 100;
-    public int CurrentStress;
+    private int CurrentStress;
     public int StartingStress = 0;
     public int StressIncreaseRate = 1; // Rate at which stress increases per second while in bad area
     public int StressDecreaseRate = 1; // Rate at which stress decreases per second when not in bad area
-
+    private int MinimumUIStress = 7; // Minimum stress required to show the StressBar UI
+    
     public float stressChangeThreshold = 5f; // Time threshold for considering stress unchanged (in seconds)
     private float timeSinceLastStressChange = 0f;
+
     private Coroutine stressIncreaseCoroutine;
     private Coroutine stressDecreaseCoroutine;
     public StressBar stressBar;
@@ -83,8 +85,11 @@ public class Stress : MonoBehaviour
         {
             CurrentStress = MaxStress;
         }
-        stressBar.SetStress(CurrentStress);
-        timeSinceLastStressChange = Time.time; // Update the time since last stress change
+        if (CurrentStress >= MinimumUIStress)
+        {
+            stressBar.SetStress(CurrentStress);
+            timeSinceLastStressChange = Time.time; // Update the time since last stress change
+        }
     }
 
     void ReduceStress(int stress)
@@ -94,7 +99,10 @@ public class Stress : MonoBehaviour
         {
             CurrentStress = 0;
         }
-        stressBar.SetStress(CurrentStress);
-        timeSinceLastStressChange = Time.time; // Update the time since last stress change
+        if (CurrentStress >= MinimumUIStress)
+        {
+            stressBar.SetStress(CurrentStress);
+            timeSinceLastStressChange = Time.time; // Update the time since last stress change
+        }
     }
 }
