@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Stress : MonoBehaviour
@@ -8,7 +6,13 @@ public class Stress : MonoBehaviour
     public int MaxStress = 100;
     public int CurrentStress;
     public int StartingStress = 0;
+    public int StressIncreaseRate = 1; // Rate at which stress increases per second while in bad area
+    public int StressDecreaseRate = 1; // Rate at which stress decreases per second when not in bad area
 
+    public float stressChangeThreshold = 5f; // Time threshold for considering stress unchanged (in seconds)
+    private float timeSinceLastStressChange = 0f;
+    private Coroutine stressIncreaseCoroutine;
+    private Coroutine stressDecreaseCoroutine;
     public StressBar stressBar;
 
     void Start()
@@ -16,38 +20,81 @@ public class Stress : MonoBehaviour
         CurrentStress = StartingStress;
         stressBar.SetStress(CurrentStress);
         stressBar.SetMaxStress(MaxStress);
+
+        // Start the coroutine to decrease stress over time
+        stressDecreaseCoroutine = StartCoroutine(DecreaseStressOverTime());
     }
+
     void Update()
     {
-
-        /*
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Time.time - timeSinceLastStressChange > stressChangeThreshold)
         {
-            RecieveStress(10);
+            // Hide the StressBar UI if the stress hasn't changed for a while
+            stressBar.gameObject.SetActive(false);
         }
-        if (Input.GetKeyDown(KeyCode.Backspace))
+        else
         {
-            ReduceStress(10);
+            stressBar.gameObject.SetActive(true);
         }
-        */
     }
 
-    void RecieveStress(int stress)
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("BadArea"))
+        {
+            // Start the coroutine to increase stress while in the bad area
+            stressIncreaseCoroutine = StartCoroutine(IncreaseStressOverTime());
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("BadArea"))
+        {
+            if (stressIncreaseCoroutine != null)
+            {
+                StopCoroutine(stressIncreaseCoroutine);
+            }
+        }
+    }
+
+    IEnumerator IncreaseStressOverTime()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1);
+            ReceiveStress(StressIncreaseRate);
+        }
+    }
+
+    IEnumerator DecreaseStressOverTime()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1);
+            ReduceStress(StressDecreaseRate);
+        }
+    }
+
+    void ReceiveStress(int stress)
     {
         CurrentStress += stress;
-        stressBar.SetStress(CurrentStress);
         if (CurrentStress > MaxStress)
         {
             CurrentStress = MaxStress;
         }
+        stressBar.SetStress(CurrentStress);
+        timeSinceLastStressChange = Time.time; // Update the time since last stress change
     }
+
     void ReduceStress(int stress)
     {
         CurrentStress -= stress;
-        stressBar.SetStress(CurrentStress);
         if (CurrentStress < 0)
         {
             CurrentStress = 0;
         }
+        stressBar.SetStress(CurrentStress);
+        timeSinceLastStressChange = Time.time; // Update the time since last stress change
     }
 }
