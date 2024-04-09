@@ -19,10 +19,7 @@ public class Stress : MonoBehaviour
     }
     void Update()
     {
-        if (OnTriggerEnter)
-        {
-            RecieveStress(10);
-        }
+
         /*
         if (Input.GetKeyDown(KeyCode.Space))
         {
