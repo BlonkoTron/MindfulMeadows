@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.34620723, g: 0.6320789, b: 0.86859554, a: 1}
+  m_IndirectSpecularColor: {r: 0.34570852, g: 0.6318214, b: 0.8684977, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2215,6 +2215,10 @@ PrefabInstance:
       propertyPath: canInteract
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4403855703594143068, guid: b37e4d11705bc44449953ddc75361d0b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: -2.944896
+      objectReference: {fileID: 0}
     - target: {fileID: 5408577656802593273, guid: b37e4d11705bc44449953ddc75361d0b, type: 3}
       propertyPath: speed
       value: 6
@@ -2371,6 +2375,32 @@ PrefabInstance:
     - target: {fileID: 276097017691229116, guid: a2910d824e06b3447afb8d7dc7cb4de3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5533815645890632356, guid: a2910d824e06b3447afb8d7dc7cb4de3, type: 3}
+      propertyPath: dialogTexts.Array.data[0]
+      value: "#1 Scribbly \r\nHey there ___ nice to meet you. I'm Scribbly and I
+        will help teach you how to use that notebook you hold. To use it you simply
+        click on it and write. If you want to remove the darkness you will need a
+        (seed) and write a message into the (seed). Then plant the seed in the darkness
+        and see how this positive message melts away the (dark)."
+      objectReference: {fileID: 0}
+    - target: {fileID: 5533815645890632356, guid: a2910d824e06b3447afb8d7dc7cb4de3, type: 3}
+      propertyPath: dialogTexts.Array.data[1]
+      value: '#2 Scribbly
+
+        I have taken care of the wood as long as I remember,
+        keeping the darkness at bay, but recently the darkness has spread too quickly.
+        I am happy that I am finally receiving assistance from someone who understands
+        the importance of growth. Unlike my brother he would just have removed all
+        the trees, he doesn''t see the beauty of growth.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5533815645890632356, guid: a2910d824e06b3447afb8d7dc7cb4de3, type: 3}
+      propertyPath: dialogTexts.Array.data[2]
+      value: '#3 Scribbly
+
+        I remember when the forest was clean I miss that,
+        but that doesn''t bring me down. I know it will get better with you around.
+        I trust that.'
       objectReference: {fileID: 0}
     - target: {fileID: 7538596828314778898, guid: a2910d824e06b3447afb8d7dc7cb4de3, type: 3}
       propertyPath: m_Name
@@ -3446,6 +3476,88 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 214da45e430eff14da82b9e8b28efaf2, type: 3}
+--- !u!1001 &1465528269
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 276097017691229116, guid: a2910d824e06b3447afb8d7dc7cb4de3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 192.393
+      objectReference: {fileID: 0}
+    - target: {fileID: 276097017691229116, guid: a2910d824e06b3447afb8d7dc7cb4de3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -134.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 276097017691229116, guid: a2910d824e06b3447afb8d7dc7cb4de3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2689.377
+      objectReference: {fileID: 0}
+    - target: {fileID: 276097017691229116, guid: a2910d824e06b3447afb8d7dc7cb4de3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 276097017691229116, guid: a2910d824e06b3447afb8d7dc7cb4de3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 276097017691229116, guid: a2910d824e06b3447afb8d7dc7cb4de3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 276097017691229116, guid: a2910d824e06b3447afb8d7dc7cb4de3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 276097017691229116, guid: a2910d824e06b3447afb8d7dc7cb4de3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 276097017691229116, guid: a2910d824e06b3447afb8d7dc7cb4de3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 276097017691229116, guid: a2910d824e06b3447afb8d7dc7cb4de3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5533815645890632356, guid: a2910d824e06b3447afb8d7dc7cb4de3, type: 3}
+      propertyPath: dialogTexts.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5533815645890632356, guid: a2910d824e06b3447afb8d7dc7cb4de3, type: 3}
+      propertyPath: dialogTexts.Array.data[0]
+      value: "#1 The folder\r\nOh hello, haven't i seen you before hmm maybe not
+        anyways i am \u201Cblank\u201D. \r\n"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5533815645890632356, guid: a2910d824e06b3447afb8d7dc7cb4de3, type: 3}
+      propertyPath: dialogTexts.Array.data[1]
+      value: "#2 \r\nOh you are the one who has been repairing the forest. Have you
+        met my brother? Oh yes he must be happy to have gained assistance. But don't
+        always just let your thoughts grow, being able to let go is important  or
+        you will end up like my brother instead of letting go of the forest and making
+        it again. He just watches it getting more rotten with each day. Here let
+        me show you how so you won't end up like my brother being powerless to make
+        something new only repairing what is lost."
+      objectReference: {fileID: 0}
+    - target: {fileID: 5533815645890632356, guid: a2910d824e06b3447afb8d7dc7cb4de3, type: 3}
+      propertyPath: dialogTexts.Array.data[2]
+      value: 'Farvel
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7538596828314778898, guid: a2910d824e06b3447afb8d7dc7cb4de3, type: 3}
+      propertyPath: m_Name
+      value: NPC
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a2910d824e06b3447afb8d7dc7cb4de3, type: 3}
 --- !u!1001 &1482796640
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3826,11 +3938,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2121602591062241402, guid: 94df63941d3ec404281c7be02dbb2a0c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.00094342977
+      value: -0.0009433613
       objectReference: {fileID: 0}
     - target: {fileID: 2121602591062241402, guid: 94df63941d3ec404281c7be02dbb2a0c, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.00009614306
+      value: 0.00009613609
       objectReference: {fileID: 0}
     - target: {fileID: 2338561661505473077, guid: 94df63941d3ec404281c7be02dbb2a0c, type: 3}
       propertyPath: m_Name
@@ -3866,11 +3978,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3945309019610390915, guid: 94df63941d3ec404281c7be02dbb2a0c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.0009434127
+      value: -0.0009433785
       objectReference: {fileID: 0}
     - target: {fileID: 3945309019610390915, guid: 94df63941d3ec404281c7be02dbb2a0c, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.00009614131
+      value: 0.000096137825
       objectReference: {fileID: 0}
     - target: {fileID: 5227798464320782476, guid: 94df63941d3ec404281c7be02dbb2a0c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3886,15 +3998,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5227798464320782476, guid: 94df63941d3ec404281c7be02dbb2a0c, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.11946187
+      value: 0.11946188
       objectReference: {fileID: 0}
     - target: {fileID: 5227798464320782476, guid: 94df63941d3ec404281c7be02dbb2a0c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.0009414907
+      value: -0.00094148336
       objectReference: {fileID: 0}
     - target: {fileID: 5227798464320782476, guid: 94df63941d3ec404281c7be02dbb2a0c, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.00011328355
+      value: 0.00011328267
       objectReference: {fileID: 0}
     - target: {fileID: 5283569691747106723, guid: 94df63941d3ec404281c7be02dbb2a0c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5466,3 +5578,4 @@ SceneRoots:
   - {fileID: 978813327}
   - {fileID: 1157821407}
   - {fileID: 947960247}
+  - {fileID: 1465528269}
