@@ -16,7 +16,7 @@ public class PlayerInteract : MonoBehaviour
     {
         if (interactionMark != null)
         {
-            if (canInteract)
+            if (canInteract && Interactable != null)
             {
                 interactionMark.SetActive(true);
        
@@ -42,7 +42,7 @@ public class PlayerInteract : MonoBehaviour
     }
    
 
-    void OnTriggerStay(Collider trigger)
+    void OnTriggerEnter(Collider trigger)
     {
         if (trigger.gameObject.CompareTag("Interactable"))
         {   
