@@ -6,11 +6,12 @@ public class Stress : MonoBehaviour
     private int MaxStress = 100;
     private float CurrentStress;
     private int StartingStress = 0;
+    private int MinimumUIStress = 7; // Minimum stress required to show the StressBar UI
+
     [SerializeField] float StressIncreaseRate = 1; // Rate at which stress increases while in bad area
     [SerializeField] float StressDecreaseRate = 0.1f; // Rate at which stress decreases when not in bad area
-    private int MinimumUIStress = 7; // Minimum stress required to show the StressBar UI
-    
-    private float stressChangeThreshold = 5f; // Time threshold for considering stress unchanged (in seconds)
+
+    private float stressChangeThreshold = 10f; // Time threshold for considering stress unchanged (in seconds)
     private float timeSinceLastStressChange = 0f;
 
     private Coroutine stressIncreaseCoroutine;
@@ -32,16 +33,36 @@ public class Stress : MonoBehaviour
         // Check if the time since last stress change exceeds the threshold
         if (Time.time - timeSinceLastStressChange > stressChangeThreshold)
         {
-            // Check if the stress value hasn't changed
-            if (Mathf.Abs(CurrentStress - stressBar.GetStress()) < StressDecreaseRate)
-            {
-                // Hide the StressBar UI if the stress hasn't changed for a while
-                stressBar.gameObject.SetActive(false);
-                return; // Exit the method to avoid setting the UI active below
-            }
+            stressBar.gameObject.SetActive(false);
+            return; // Exit the method to avoid setting the UI active below
         }
         stressBar.gameObject.SetActive(true);
+
+        if (Interaction.isInteracting)
+        {
+            // If interacting, stop the stress decrease coroutine
+            if (stressDecreaseCoroutine != null)
+            {
+                StopCoroutine(stressDecreaseCoroutine);
+                stressDecreaseCoroutine = null; // Reset the coroutine reference to null to allow it to be started again later
+            }
+            // Also stop the stress increase coroutine
+            if (stressIncreaseCoroutine != null)
+            {
+                StopCoroutine(stressIncreaseCoroutine);
+                stressIncreaseCoroutine = null;
+            }
+        }
+        else
+        {
+            // If not interacting, start the stress decrease coroutine if it's not already running
+            if (stressDecreaseCoroutine == null)
+            {
+                stressDecreaseCoroutine = StartCoroutine(DecreaseStressOverTime());
+            }
+        }
     }
+
 
     void OnTriggerEnter(Collider other)
     {
@@ -68,14 +89,10 @@ public class Stress : MonoBehaviour
         }
     }
 
-    IEnumerator IncreaseStressOverTime()
+    IEnumerator IncreaseStressOverTime() // Using IEnumerator in stead of for loop to allow for WaitForSeconds
     {
         while (true)
         {
-            // Check if isInteracting bool is true
-            if (Interaction.isInteracting)
-                yield break;
-
             yield return new WaitForSeconds(1);
             ReceiveStress(StressIncreaseRate);
         }
@@ -110,6 +127,11 @@ public class Stress : MonoBehaviour
         if (CurrentStress < StartingStress)
         {
             CurrentStress = StartingStress;
+            if (stressDecreaseCoroutine != null)
+            {
+                StopCoroutine(stressDecreaseCoroutine);
+                stressDecreaseCoroutine = null;
+            }
         }
         if (CurrentStress >= MinimumUIStress)
         {
