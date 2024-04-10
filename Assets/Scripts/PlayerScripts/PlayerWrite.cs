@@ -5,10 +5,6 @@ using UnityEngine.InputSystem;
 
 public class PlayerWrite : Write
 {
-    [Multiline]
-    private bool isOpen = false;
-    private WritingBox myWritingBox;
-
     private PlayerInteract playerInteract;
     
     private void Start()

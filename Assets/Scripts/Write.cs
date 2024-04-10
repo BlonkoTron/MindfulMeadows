@@ -6,8 +6,8 @@ public class Write : Interaction
 {
     [Multiline]
     [SerializeField] private string prompt;
-    private bool isOpen = false;
-    private WritingBox myWritingBox;
+    private protected bool isOpen = false;
+    private protected WritingBox myWritingBox;
     private BadArea myBadArea;
 
     private void Start()
