@@ -22,13 +22,19 @@ public class PlayerWrite : Interaction
         if (!playerInteract.canInteract)
         {   
             if (Inventory.seeds > 0)
-            {
-                InteractionStart();
+            {   
+                if (!isInteracting)
+                {
+                    isInteracting = true;
 
-                Debug.Log("Jeg er playerWrite og jeg bliver kaldt");
+                    InteractionStart();
 
-                PlayerMovement.instance.canMove = false;
-                CameraController.instance.StopCamera();
+                    Debug.Log("Jeg er playerWrite og jeg bliver kaldt");
+
+                    PlayerMovement.instance.canMove = false;
+                    CameraController.instance.StopCamera();
+
+                }
 
             }
             
