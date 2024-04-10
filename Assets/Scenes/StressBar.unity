@@ -262,6 +262,9 @@ MonoBehaviour:
   MaxStress: 100
   CurrentStress: 0
   StartingStress: 0
+  StressIncreaseRate: 1
+  StressDecreaseRate: 1
+  stressChangeThreshold: 5
   stressBar: {fileID: 1831505165}
 --- !u!1 &700016578
 GameObject:
@@ -604,7 +607,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 100
   m_WholeNumbers: 1
-  m_Value: 0
+  m_Value: 7
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
