@@ -7,6 +7,7 @@ public class BadArea : MonoBehaviour
     [HideInInspector] public int treesPlantedHere = 0;
     public int treesToClear;
     [SerializeField] private GameObject unlockableObj;
+    [SerializeField] private GameObject deathParticle;
     private Unlockable myUnlockableScript;
     private ParticleSystem myParticle;
     private LineRenderer myline;
@@ -36,6 +37,7 @@ public class BadArea : MonoBehaviour
 
     public void ClearArea()
     {
+        Instantiate(deathParticle, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 
