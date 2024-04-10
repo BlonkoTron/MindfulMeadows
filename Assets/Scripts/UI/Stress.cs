@@ -6,11 +6,11 @@ public class Stress : MonoBehaviour
     private int MaxStress = 100;
     private float CurrentStress;
     private int StartingStress = 0;
-    public float StressIncreaseRate = 1; // Rate at which stress increases per second while in bad area
-    public float StressDecreaseRate = 0.1f; // Rate at which stress decreases per second when not in bad area
+    [SerializeField] float StressIncreaseRate = 1; // Rate at which stress increases while in bad area
+    [SerializeField] float StressDecreaseRate = 0.1f; // Rate at which stress decreases when not in bad area
     private int MinimumUIStress = 7; // Minimum stress required to show the StressBar UI
     
-    public float stressChangeThreshold = 5f; // Time threshold for considering stress unchanged (in seconds)
+    private float stressChangeThreshold = 5f; // Time threshold for considering stress unchanged (in seconds)
     private float timeSinceLastStressChange = 0f;
 
     private Coroutine stressIncreaseCoroutine;
