@@ -259,12 +259,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86fa7eb3f59a45b4ea50cb2d35642987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxStress: 100
-  CurrentStress: 0
-  StartingStress: 0
   StressIncreaseRate: 1
   StressDecreaseRate: 1
-  stressChangeThreshold: 5
   stressBar: {fileID: 1831505165}
 --- !u!1 &700016578
 GameObject:

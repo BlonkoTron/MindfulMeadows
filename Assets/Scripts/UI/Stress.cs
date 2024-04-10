@@ -3,15 +3,15 @@ using UnityEngine;
 
 public class Stress : MonoBehaviour
 {
-    private int MaxStress = 100;
+    private readonly int MaxStress = 100;
     private float CurrentStress;
-    private int StartingStress = 0;
-    private int MinimumUIStress = 7; // Minimum stress required to show the StressBar UI
+    private readonly int StartingStress = 0;
+    private readonly int MinimumUIStress = 7; // Minimum stress required to show the StressBar UI
 
     [SerializeField] float StressIncreaseRate = 1; // Rate at which stress increases while in bad area
     [SerializeField] float StressDecreaseRate = 0.1f; // Rate at which stress decreases when not in bad area
 
-    private float stressChangeThreshold = 10f; // Time threshold for considering stress unchanged (in seconds)
+    private readonly float stressChangeThreshold = 10f; // Time threshold for considering stress unchanged (in seconds)
     private float timeSinceLastStressChange = 0f;
 
     private Coroutine stressIncreaseCoroutine;
@@ -62,7 +62,6 @@ public class Stress : MonoBehaviour
             }
         }
     }
-
 
     void OnTriggerEnter(Collider other)
     {
