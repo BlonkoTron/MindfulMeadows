@@ -5103,7 +5103,7 @@ GameObject:
   - component: {fileID: 2399826734668123461}
   - component: {fileID: 5539490082840103403}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: BadArea Tag
   m_TagString: BadArea
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
