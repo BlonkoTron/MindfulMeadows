@@ -5006,4 +5006,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickupRange: 2.5
-  pickupSpeed: 30
+  pickupSpeed: 35
