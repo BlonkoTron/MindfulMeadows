@@ -42,7 +42,7 @@ public class PlayerInteract : MonoBehaviour
     }
    
 
-    void OnTriggerEnter(Collider trigger)
+    void OnTriggerStay(Collider trigger)
     {
         if (trigger.gameObject.CompareTag("Interactable"))
         {   
