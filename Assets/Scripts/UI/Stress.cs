@@ -3,11 +3,11 @@ using UnityEngine;
 
 public class Stress : MonoBehaviour
 {
-    public int MaxStress = 100;
-    private int CurrentStress;
-    public int StartingStress = 0;
-    public int StressIncreaseRate = 1; // Rate at which stress increases per second while in bad area
-    public int StressDecreaseRate = 1; // Rate at which stress decreases per second when not in bad area
+    private int MaxStress = 100;
+    private float CurrentStress;
+    private int StartingStress = 0;
+    public float StressIncreaseRate = 1; // Rate at which stress increases per second while in bad area
+    public float StressDecreaseRate = 0.1f; // Rate at which stress decreases per second when not in bad area
     private int MinimumUIStress = 7; // Minimum stress required to show the StressBar UI
     
     public float stressChangeThreshold = 5f; // Time threshold for considering stress unchanged (in seconds)
@@ -29,15 +29,18 @@ public class Stress : MonoBehaviour
 
     void Update()
     {
+        // Check if the time since last stress change exceeds the threshold
         if (Time.time - timeSinceLastStressChange > stressChangeThreshold)
         {
-            // Hide the StressBar UI if the stress hasn't changed for a while
-            stressBar.gameObject.SetActive(false);
+            // Check if the stress value hasn't changed
+            if (Mathf.Abs(CurrentStress - stressBar.GetStress()) < StressDecreaseRate)
+            {
+                // Hide the StressBar UI if the stress hasn't changed for a while
+                stressBar.gameObject.SetActive(false);
+                return; // Exit the method to avoid setting the UI active below
+            }
         }
-        else
-        {
-            stressBar.gameObject.SetActive(true);
-        }
+        stressBar.gameObject.SetActive(true);
     }
 
     void OnTriggerEnter(Collider other)
@@ -46,6 +49,8 @@ public class Stress : MonoBehaviour
         {
             // Start the coroutine to increase stress while in the bad area
             stressIncreaseCoroutine = StartCoroutine(IncreaseStressOverTime());
+            // Stop the coroutine to decrease stress while in the bad area
+            StopCoroutine(stressDecreaseCoroutine);
         }
     }
 
@@ -55,7 +60,10 @@ public class Stress : MonoBehaviour
         {
             if (stressIncreaseCoroutine != null)
             {
+                // Stop the coroutine to increase stress when leaving the bad area
                 StopCoroutine(stressIncreaseCoroutine);
+                // Start the coroutine to decrease stress when leaving the bad area
+                StartCoroutine(DecreaseStressOverTime());
             }
         }
     }
@@ -64,6 +72,10 @@ public class Stress : MonoBehaviour
     {
         while (true)
         {
+            // Check if isInteracting bool is true
+            if (Interaction.isInteracting)
+                yield break;
+
             yield return new WaitForSeconds(1);
             ReceiveStress(StressIncreaseRate);
         }
@@ -78,7 +90,7 @@ public class Stress : MonoBehaviour
         }
     }
 
-    void ReceiveStress(int stress)
+    void ReceiveStress(float stress)
     {
         CurrentStress += stress;
         if (CurrentStress > MaxStress)
@@ -92,12 +104,12 @@ public class Stress : MonoBehaviour
         }
     }
 
-    void ReduceStress(int stress)
+    void ReduceStress(float stress)
     {
         CurrentStress -= stress;
-        if (CurrentStress < 0)
+        if (CurrentStress < StartingStress)
         {
-            CurrentStress = 0;
+            CurrentStress = StartingStress;
         }
         if (CurrentStress >= MinimumUIStress)
         {
