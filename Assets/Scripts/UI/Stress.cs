@@ -8,8 +8,8 @@ public class Stress : MonoBehaviour
     private readonly int StartingStress = 0;
     private readonly int MinimumUIStress = 7; // Minimum stress required to show the StressBar UI
 
-    [SerializeField] float StressIncreaseRate = 1; // Rate at which stress increases while in bad area
-    [SerializeField] float StressDecreaseRate = 0.1f; // Rate at which stress decreases when not in bad area
+    [SerializeField] float StressIncreaseRate; // Rate at which stress increases while in bad area
+    [SerializeField] float StressDecreaseRate; // Rate at which stress decreases when not in bad area
 
     private readonly float stressChangeThreshold = 10f; // Time threshold for considering stress unchanged (in seconds)
     private float timeSinceLastStressChange = 0f;
@@ -36,7 +36,7 @@ public class Stress : MonoBehaviour
             stressBar.gameObject.SetActive(false);
             return; // Exit the method to avoid setting the UI active below
         }
-        stressBar.gameObject.SetActive(true);
+            stressBar.gameObject.SetActive(true);
 
         if (Interaction.isInteracting)
         {
@@ -53,24 +53,23 @@ public class Stress : MonoBehaviour
                 stressIncreaseCoroutine = null;
             }
         }
-        else
-        {
-            // If not interacting, start the stress decrease coroutine if it's not already running
-            if (stressDecreaseCoroutine == null)
-            {
-                stressDecreaseCoroutine = StartCoroutine(DecreaseStressOverTime());
-            }
-        }
     }
 
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("BadArea"))
         {
+            Debug.Log("Entered bad area");
+
             // Start the coroutine to increase stress while in the bad area
             stressIncreaseCoroutine = StartCoroutine(IncreaseStressOverTime());
-            // Stop the coroutine to decrease stress while in the bad area
-            StopCoroutine(stressDecreaseCoroutine);
+
+            // Stop the coroutine to decrease stress while in the bad area if it's not null
+            if (stressDecreaseCoroutine != null)
+            {
+                StopCoroutine(stressDecreaseCoroutine);
+                stressDecreaseCoroutine = null;
+            }
         }
     }
 
@@ -80,10 +79,17 @@ public class Stress : MonoBehaviour
         {
             if (stressIncreaseCoroutine != null)
             {
+                Debug.Log("Exited bad area");
+
                 // Stop the coroutine to increase stress when leaving the bad area
                 StopCoroutine(stressIncreaseCoroutine);
-                // Start the coroutine to decrease stress when leaving the bad area
-                StartCoroutine(DecreaseStressOverTime());
+                stressIncreaseCoroutine = null;
+            }
+
+            // Start the coroutine to decrease stress when leaving the bad area if it's not already running
+            if (stressDecreaseCoroutine == null)
+            {
+                stressDecreaseCoroutine = StartCoroutine(DecreaseStressOverTime());
             }
         }
     }
@@ -92,8 +98,9 @@ public class Stress : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(2);
             ReceiveStress(StressIncreaseRate);
+            Debug.Log("Increasing stress");
         }
     }
 
@@ -101,12 +108,13 @@ public class Stress : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(2);
             ReduceStress(StressDecreaseRate);
+            Debug.Log("Decreasing stress");
         }
     }
 
-    void ReceiveStress(float stress)
+    public void ReceiveStress(float stress)
     {
         CurrentStress += stress;
         if (CurrentStress > MaxStress)
@@ -120,7 +128,7 @@ public class Stress : MonoBehaviour
         }
     }
 
-    void ReduceStress(float stress)
+    public void ReduceStress(float stress)
     {
         CurrentStress -= stress;
         if (CurrentStress < StartingStress)
