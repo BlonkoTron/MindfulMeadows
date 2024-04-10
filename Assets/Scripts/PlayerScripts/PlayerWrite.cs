@@ -47,7 +47,6 @@ public class PlayerWrite : Interaction
         {
             myWritingBox.enabled = true;
             myWritingBox.OpenWritingBox();
-            myWritingBox.myWrite = this.GetComponent<Write>();
         }
     }
     public override void InteractionEnd()
