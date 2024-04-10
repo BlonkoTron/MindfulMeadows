@@ -27,11 +27,8 @@ public class Write : Interaction
                     myWritingBox.enabled = true;
                     myWritingBox.OpenWritingBox(prompt);
                     myWritingBox.myWrite = this.GetComponent<Write>();
-
                     CameraController.instance.StopCamera();
                 }
-                
-
             }
         }
         else
