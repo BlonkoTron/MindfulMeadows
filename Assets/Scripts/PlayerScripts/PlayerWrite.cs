@@ -19,6 +19,7 @@ public class PlayerWrite : Write
 
     private void OnWrite()
     {
+        /*
         if (!playerInteract.canInteract)
         {   
             if (Inventory.seeds > 0)
@@ -33,12 +34,10 @@ public class PlayerWrite : Write
 
                     PlayerMovement.instance.canMove = false;
                     CameraController.instance.StopCamera();
-
                 }
-
-            }
-            
+            } 
         }
+        */
     }
 
     public override void InteractionStart()
