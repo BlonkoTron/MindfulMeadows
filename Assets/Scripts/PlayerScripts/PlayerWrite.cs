@@ -3,12 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerWrite : Interaction
+public class PlayerWrite : Write
 {
-    [Multiline]
-    private bool isOpen = false;
-    private WritingBox myWritingBox;
-
     private PlayerInteract playerInteract;
     
     private void Start()
@@ -19,6 +15,7 @@ public class PlayerWrite : Interaction
 
     private void OnWrite()
     {
+        /*
         if (!playerInteract.canInteract)
         {   
             if (Inventory.seeds > 0)
@@ -33,12 +30,10 @@ public class PlayerWrite : Interaction
 
                     PlayerMovement.instance.canMove = false;
                     CameraController.instance.StopCamera();
-
                 }
-
-            }
-            
+            } 
         }
+        */
     }
 
     public override void InteractionStart()
@@ -47,6 +42,7 @@ public class PlayerWrite : Interaction
         {
             myWritingBox.enabled = true;
             myWritingBox.OpenWritingBox();
+            myWritingBox.myWrite = this.GetComponent<Write>();
         }
     }
     public override void InteractionEnd()
@@ -57,13 +53,4 @@ public class PlayerWrite : Interaction
         PlayerMovement.instance.canMove = true;
         CameraController.instance.StartCamera();
     }
-    public override void InteractionCancel()
-    {
-        isInteracting = false;
-        myInteractionStage = 0;
-        PlayerMovement.instance.canMove = true;
-        CameraController.instance.StartCamera();
-        myWritingBox.enabled = false;
-    }
-
 }

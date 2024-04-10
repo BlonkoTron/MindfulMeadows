@@ -12,6 +12,7 @@ public class WritingBox : MonoBehaviour
     private TMP_InputField myIputField;
     private Animator anim;
     [HideInInspector] public Write myWrite;
+
     private SeedCounter seedCounter;
     private float playerOffSet = 0.4f;
     private bool isOpen=false;
