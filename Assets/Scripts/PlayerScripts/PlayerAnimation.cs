@@ -23,7 +23,7 @@ public class PlayerAnimation : MonoBehaviour
     {
         movement = value.Get<Vector3>();
 
-        Debug.Log(movement);
+
 
         if (movement != Vector3.zero)
         {
