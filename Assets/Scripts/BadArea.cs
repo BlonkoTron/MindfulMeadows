@@ -11,6 +11,7 @@ public class BadArea : MonoBehaviour
     private Unlockable myUnlockableScript;
     private ParticleSystem myParticle;
     private LineRenderer myline;
+    [SerializeField] AnimationCurve lineCurve;
 
     private void Start()
     {
@@ -50,9 +51,26 @@ public class BadArea : MonoBehaviour
     }
     public void SetLineRenderer()
     {
+        int lineIndex = 0;
+        int lineSegments = 20;
+        float maxVerticalOffset = 20;
+        float verticalOffset = 0;
         Vector3 startPos = transform.position;
         Vector3 endPos = unlockableObj.transform.position;
-        Vector3[] linePositions = { startPos, endPos };
-        myline.SetPositions(linePositions);
+        Vector3 midPos = Vector3.Lerp(startPos, endPos, 0.5f);
+        //Vector3[] linePositions = { startPos, new Vector3(midPos.x,midPos.y+20,midPos.z), endPos };
+        //myline.SetPositions(linePositions);
+        myline.positionCount=lineSegments;
+        myline.SetPosition(lineIndex,startPos);
+        for (int i=0; i<lineSegments-1;i++)
+        {
+            lineIndex++;
+            float ratio = (float)lineIndex / (float)lineSegments;
+            Vector3 newPos = Vector3.Lerp(startPos, endPos, ratio);
+            verticalOffset = lineCurve.Evaluate(ratio) * maxVerticalOffset;
+            myline.SetPosition(lineIndex, new Vector3(newPos.x,newPos.y+verticalOffset,newPos.z));
+        }
+        myline.SetPosition(lineIndex, endPos);
+
     }
 }

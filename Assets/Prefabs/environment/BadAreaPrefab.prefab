@@ -54,6 +54,39 @@ MonoBehaviour:
   treesToClear: 1
   unlockableObj: {fileID: 0}
   deathParticle: {fileID: 3713878501277279890, guid: 25824d5d79cc4474494a6b0fced4fe42, type: 3}
+  lineCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.51619226
+      value: 0.35033202
+      inSlope: -0.09023247
+      outSlope: -0.09023247
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1.0033468
+      value: -0.004710853
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &1446267849257839157
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,7 +214,6 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
   m_Parameters:
     serializedVersion: 3
