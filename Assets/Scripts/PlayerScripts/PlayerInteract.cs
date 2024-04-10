@@ -16,7 +16,7 @@ public class PlayerInteract : MonoBehaviour
     {
         if (interactionMark != null)
         {
-            if (canInteract)
+            if (canInteract && Interactable != null)
             {
                 interactionMark.SetActive(true);
        

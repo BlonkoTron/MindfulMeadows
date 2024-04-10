@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Menu.unity
     guid: 784d988599086464dbfafc13c747fa73
   - enabled: 1
-    path: Assets/Scenes/Mark Test 2.unity
-    guid: 6e694586c44dc0146bf14f0652338881
+    path: Assets/Scenes/Cool map.unity
+    guid: 9f45da278af499f44a9d881b8a0028c6
   m_configObjects: {}
