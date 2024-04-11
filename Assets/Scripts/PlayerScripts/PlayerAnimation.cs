@@ -23,22 +23,28 @@ public class PlayerAnimation : MonoBehaviour
     {
         movement = value.Get<Vector3>();
 
+        if (PlayerMovement.instance.canMove)
+        {
+            if (movement != Vector3.zero)
+            {
+                animator.SetBool("IsMoving", true);
+            }
+            else
+            {
+                animator.SetBool("IsMoving", false);
+            }
+        }
 
 
-        if (movement != Vector3.zero)
-        {
-            animator.SetBool("IsMoving", true);
-        }
-        else
-        {
-            animator.SetBool("IsMoving", false);
-        }
     }
 
     private void OnJump(InputValue value)
     {
-           animator.SetBool("IsJumping", true);
            
+        if (PlayerMovement.instance.canMove)
+        {
+            animator.SetBool("IsJumping", true);
+        }
     }
 
     void Update() 
