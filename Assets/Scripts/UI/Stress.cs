@@ -93,6 +93,23 @@ public class Stress : MonoBehaviour
             }
         }
     }
+    public void BadAreaExit()
+    {
+        if (stressIncreaseCoroutine != null)
+        {
+            Debug.Log("Exited/Destroyed bad area");
+
+            // Stop the coroutine to increase stress when leaving the bad area
+            StopCoroutine(stressIncreaseCoroutine);
+            stressIncreaseCoroutine = null;
+        }
+
+        // Start the coroutine to decrease stress when leaving the bad area if it's not already running
+        if (stressDecreaseCoroutine == null)
+        {
+            stressDecreaseCoroutine = StartCoroutine(DecreaseStressOverTime());
+        }
+    }
 
     IEnumerator IncreaseStressOverTime() // Using IEnumerator in stead of for loop to allow for WaitForSeconds
     {

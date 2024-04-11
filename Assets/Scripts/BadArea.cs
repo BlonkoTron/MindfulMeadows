@@ -12,6 +12,9 @@ public class BadArea : MonoBehaviour
     private ParticleSystem myParticle;
     private LineRenderer myline;
     [SerializeField] AnimationCurve lineCurve;
+    private Stress stressScript;
+
+
 
     private void Start()
     {
@@ -39,6 +42,7 @@ public class BadArea : MonoBehaviour
     public void ClearArea()
     {
         Instantiate(deathParticle, transform.position, Quaternion.identity);
+        stressScript.BadAreaExit();
         Destroy(gameObject);
     }
 
