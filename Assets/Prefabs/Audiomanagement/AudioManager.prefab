@@ -44,16 +44,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ae514e05d57cf34483bb783c64c6457, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sounds:
-  - name: music_active
-    volume: 1
-    clip: {fileID: 8300000, guid: f1e2e668733884f5b9645adef755de2c, type: 3}
-    source: {fileID: 0}
+  musicClips:
   - name: music_normal
     volume: 1
     clip: {fileID: 8300000, guid: bcd81cdae32854c1eab807b07fdd6d0f, type: 3}
     source: {fileID: 0}
-  - name: music_meditative
+  - name: music_active
     volume: 1
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: f1e2e668733884f5b9645adef755de2c, type: 3}
     source: {fileID: 0}
+  sounds: []

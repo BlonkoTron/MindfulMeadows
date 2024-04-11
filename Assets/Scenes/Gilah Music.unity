@@ -457,50 +457,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioManager
       objectReference: {fileID: 0}
-    - target: {fileID: 7787815073166061427, guid: 624cd7f2347d2418ba9a06872b22bedb, type: 3}
-      propertyPath: sounds.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7787815073166061427, guid: 624cd7f2347d2418ba9a06872b22bedb, type: 3}
-      propertyPath: musicClips.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7787815073166061427, guid: 624cd7f2347d2418ba9a06872b22bedb, type: 3}
-      propertyPath: musicClips.Array.data[0].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: bcd81cdae32854c1eab807b07fdd6d0f, type: 3}
-    - target: {fileID: 7787815073166061427, guid: 624cd7f2347d2418ba9a06872b22bedb, type: 3}
-      propertyPath: musicClips.Array.data[0].name
-      value: music_normal
-      objectReference: {fileID: 0}
-    - target: {fileID: 7787815073166061427, guid: 624cd7f2347d2418ba9a06872b22bedb, type: 3}
-      propertyPath: musicClips.Array.data[1].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: f1e2e668733884f5b9645adef755de2c, type: 3}
-    - target: {fileID: 7787815073166061427, guid: 624cd7f2347d2418ba9a06872b22bedb, type: 3}
-      propertyPath: musicClips.Array.data[1].name
-      value: music_active
-      objectReference: {fileID: 0}
-    - target: {fileID: 7787815073166061427, guid: 624cd7f2347d2418ba9a06872b22bedb, type: 3}
-      propertyPath: musicClips.Array.data[2].clip
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7787815073166061427, guid: 624cd7f2347d2418ba9a06872b22bedb, type: 3}
-      propertyPath: musicClips.Array.data[2].name
-      value: music_meditative
-      objectReference: {fileID: 0}
-    - target: {fileID: 7787815073166061427, guid: 624cd7f2347d2418ba9a06872b22bedb, type: 3}
-      propertyPath: musicClips.Array.data[0].volume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7787815073166061427, guid: 624cd7f2347d2418ba9a06872b22bedb, type: 3}
-      propertyPath: musicClips.Array.data[1].volume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7787815073166061427, guid: 624cd7f2347d2418ba9a06872b22bedb, type: 3}
-      propertyPath: musicClips.Array.data[2].volume
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
