@@ -13,6 +13,7 @@ public class EndTrigger : MonoBehaviour
         {
             endScreen.SetActive(true);
             PlayerMovement.instance.canMove = false;
+            WritingDataManager.SerializeXML();
         }
     }
 

@@ -6,10 +6,6 @@ using TMPro;
 
 public class WritingBox : MonoBehaviour
 {
-    public struct WriteData
-    {
-
-    }
     [SerializeField] GameObject textPlantPrefab;
     private string myText;
     [SerializeField] private TMP_Text promptText;
@@ -21,6 +17,7 @@ public class WritingBox : MonoBehaviour
     private float playerOffSet = 0.4f;
     private bool isOpen=false;
     private bool hasPlanted = false;
+    private float openingTimer;
 
     private void Start()
     {
@@ -54,7 +51,7 @@ public class WritingBox : MonoBehaviour
             Inventory.seeds--;
             seedCounter.UpdateText();
         }
-
+        LogText();
         myWrite.InteractionEnd();
         CloseWritingBox();
     }
@@ -76,6 +73,7 @@ public class WritingBox : MonoBehaviour
         promptText.text = "";
         anim.SetBool("isActive",true);
         isOpen = true;
+        openingTimer = Time.time;
     }
     public void OpenWritingBox(string prompt)
     {
@@ -90,5 +88,9 @@ public class WritingBox : MonoBehaviour
         myIputField.text = "";
         anim.SetBool("isActive", false);
         isOpen = false;
+    }
+    public void LogText()
+    {
+        WritingDataManager.myWriteData.Add(new WritingDataManager.WriteData(promptText.text, myText.Length, Time.time - openingTimer));
     }
 }
