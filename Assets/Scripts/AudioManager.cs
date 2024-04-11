@@ -11,6 +11,8 @@ public class AudioManager : MonoBehaviour
     public static AudioManager instance;
 
     private float timer;
+    private int nextCheckTime = 15;
+    private int timerInterval = 15;
     private Sound currentBGMusic;
     //private bool musicIsPlaying = false;
 
@@ -51,9 +53,10 @@ public class AudioManager : MonoBehaviour
     {
         timer += Time.fixedDeltaTime;
 
-        if (timer % 5 == 0)
+        if (timer > nextCheckTime)
         {
             Debug.Log($"{timer}s have passed, initiating check...");
+            nextCheckTime += timerInterval;
 
             if (currentBGMusic.source != null && currentBGMusic.source.isPlaying)
             {
@@ -78,6 +81,7 @@ public class AudioManager : MonoBehaviour
         }
         currentBGMusic = s;
         s.source.Play();
+        Debug.Log($"Now playing {s.name}");
     }
 
     public void Play(Sound s)
@@ -89,6 +93,7 @@ public class AudioManager : MonoBehaviour
         }
         currentBGMusic = s;
         s.source.Play();
+        Debug.Log($"Now playing {s.name}");
     }
 
 
