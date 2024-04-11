@@ -28,7 +28,6 @@ public class WritingBox : MonoBehaviour
         if (isOpen)
         {
             SubmitText();
-            FindObjectOfType<Stress>().ReduceStress(40);
         }
     }
     void OnCancel(InputValue input)
