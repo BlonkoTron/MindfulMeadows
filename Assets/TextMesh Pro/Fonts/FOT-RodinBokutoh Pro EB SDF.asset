@@ -1342,8 +1342,8 @@ MonoBehaviour:
     m_Height: 48
   - m_X: 909
     m_Y: 90
-    m_Width: 77
-    m_Height: 90
+    m_Width: 74
+    m_Height: 94
   m_FreeGlyphRects:
   - m_X: 68
     m_Y: 38
@@ -1425,10 +1425,6 @@ MonoBehaviour:
     m_Y: 268
     m_Width: 350
     m_Height: 755
-  - m_X: 745
-    m_Y: 180
-    m_Width: 278
-    m_Height: 843
   - m_X: 520
     m_Y: 165
     m_Width: 15
@@ -1525,9 +1521,17 @@ MonoBehaviour:
     m_Y: 437
     m_Width: 1
     m_Height: 586
-  - m_X: 986
+  - m_X: 745
+    m_Y: 184
+    m_Width: 278
+    m_Height: 839
+  - m_X: 745
+    m_Y: 180
+    m_Width: 164
+    m_Height: 843
+  - m_X: 983
     m_Y: 90
-    m_Width: 37
+    m_Width: 40
     m_Height: 933
   m_fontInfo:
     Name: 
