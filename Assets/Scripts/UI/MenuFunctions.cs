@@ -16,7 +16,7 @@ public class MenuFunctions : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && SceneManager.GetActiveScene().buildIndex == 1)
         {
             EscapeMenuBool();
             Debug.Log("Escape Pressed");
@@ -60,6 +60,10 @@ public class MenuFunctions : MonoBehaviour
     }
     public void EscapeMenuBool()
     {
+        if (Interaction.isInteracting)
+        {
+            return;
+        }
         if (EscapeMenu.activeSelf)
         {
             //   GameManager.instance.Resume();
