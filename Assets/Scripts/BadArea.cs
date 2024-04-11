@@ -54,10 +54,9 @@ public class BadArea : MonoBehaviour
         int lineIndex = 0;
         int lineSegments = 20;
         float maxVerticalOffset = 20;
-        float verticalOffset = 0;
         Vector3 startPos = transform.position;
         Vector3 endPos = unlockableObj.transform.position;
-        Vector3 midPos = Vector3.Lerp(startPos, endPos, 0.5f);
+        //Vector3 midPos = Vector3.Lerp(startPos, endPos, 0.5f);
         //Vector3[] linePositions = { startPos, new Vector3(midPos.x,midPos.y+20,midPos.z), endPos };
         //myline.SetPositions(linePositions);
         myline.positionCount=lineSegments;
@@ -67,7 +66,7 @@ public class BadArea : MonoBehaviour
             lineIndex++;
             float ratio = (float)lineIndex / (float)lineSegments;
             Vector3 newPos = Vector3.Lerp(startPos, endPos, ratio);
-            verticalOffset = lineCurve.Evaluate(ratio) * maxVerticalOffset;
+            float verticalOffset = lineCurve.Evaluate(ratio) * maxVerticalOffset;
             myline.SetPosition(lineIndex, new Vector3(newPos.x,newPos.y+verticalOffset,newPos.z));
         }
         myline.SetPosition(lineIndex, endPos);
