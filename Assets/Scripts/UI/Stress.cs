@@ -11,7 +11,7 @@ public class Stress : MonoBehaviour
     [SerializeField] float StressIncreaseRate; // Rate at which stress increases while in bad area
     [SerializeField] float StressDecreaseRate; // Rate at which stress decreases when not in bad area
 
-    private readonly float stressChangeThreshold = 20f; // Time threshold for considering stress unchanged (in seconds)
+    private readonly float stressChangeThreshold = 5f; // Time threshold for considering stress unchanged (in seconds)
     private float timeSinceLastStressChange = 0f;
 
     private Coroutine stressIncreaseCoroutine;
