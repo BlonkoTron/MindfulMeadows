@@ -13,6 +13,8 @@ public class BadArea : MonoBehaviour
     private LineRenderer myline;
     [SerializeField] AnimationCurve lineCurve;
 
+
+
     private void Start()
     {
         myParticle = GetComponentInChildren<ParticleSystem>();
