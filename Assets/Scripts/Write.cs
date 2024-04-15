@@ -12,6 +12,11 @@ public class Write : Interaction
 
     private void Start()
     {
+        //Toggler musen til/fra
+        Cursor.visible = false;
+        //Låser mus til midten
+        Cursor.lockState = CursorLockMode.Locked;
+
         myBadArea = this.GetComponent<BadArea>();
         myWritingBox = GameObject.FindGameObjectWithTag("writingbox").GetComponent<WritingBox>();
     }
@@ -23,11 +28,18 @@ public class Write : Interaction
             {
                 if (!isInteracting)
                 {
+                    //Toggler musen til/fra
+                    Cursor.visible = true;
+                    //Låser mus fra fra midten
+                    Cursor.lockState = CursorLockMode.None; 
+                         
+
                     isInteracting = true;
                     myWritingBox.enabled = true;
                     myWritingBox.OpenWritingBox(prompt);
                     myWritingBox.myWrite = this.GetComponent<Write>();
                     CameraController.instance.StopCamera();
+                     
                 }
             }
         }
@@ -39,6 +51,10 @@ public class Write : Interaction
     }
     public override void InteractionEnd()
     {   
+        //Toggler musen til/fra
+        Cursor.visible = false;
+        //Låser mus til midten
+        Cursor.lockState = CursorLockMode.Locked;
 
         isInteracting = false;
         myInteractionStage = 0;
