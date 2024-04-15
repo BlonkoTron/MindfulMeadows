@@ -10,6 +10,9 @@ public class CameraController : MonoBehaviour
 
     private void Awake()
     {
+        //Fjerner musen fra skærmen?
+        Cursor.visible = false;
+
         instance = this;
         cBrain = GetComponent<CinemachineBrain>();
     }
