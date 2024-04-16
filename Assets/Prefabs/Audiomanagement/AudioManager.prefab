@@ -187,3 +187,7 @@ MonoBehaviour:
     volume: 1
     clip: {fileID: 8300000, guid: 26cfd8f5b438542b6a7dd1c31ee8ad59, type: 3}
     source: {fileID: 0}
+  - name: npcvoice
+    volume: 1
+    clip: {fileID: 8300000, guid: b629a15c2c0464928a46856ec7ee8876, type: 3}
+    source: {fileID: 0}

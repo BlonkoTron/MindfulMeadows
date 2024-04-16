@@ -13,7 +13,8 @@ public class AudioManager : MonoBehaviour
     private float timer;
     private int nextCheckTime = 120;
     private int timerInterval = 15;
-    private Sound currentBGMusic;
+    public Sound currentBGMusic;
+    public Sound currentSFX;
     //private bool musicIsPlaying = false;
 
     private void Awake()
@@ -77,19 +78,23 @@ public class AudioManager : MonoBehaviour
         if (isMusic)
         {
             s = Array.Find(musicClips, sound => sound.name == name);
+            if (s == null)
+            {
+                Debug.LogWarning($"Sound {name} not found.");
+                return;
+            }
+            currentBGMusic = s;
         }
         else
         {
             s = Array.Find(sounds, sound => sound.name == name);
+            if (s == null)
+            {
+                Debug.LogWarning($"Sound {name} not found.");
+                return;
+            }
+            currentSFX = s;
         }
-
-        if (s == null)
-        {
-            Debug.LogWarning($"Sound {name} not found.");
-            return;
-        }
-        if (isMusic)
-            currentBGMusic = s;
         s.source.Play();
         Debug.Log($"Now playing {s.name}");
     }
@@ -103,10 +108,28 @@ public class AudioManager : MonoBehaviour
         }
         if (isMusic)
             currentBGMusic = s;
+        else
+            currentSFX = s;
+
         s.source.Play();
         Debug.Log($"Now playing {s.name}");
     }
 
+    public void Stop(string name)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        if (s == null)
+        {
+            s = Array.Find(musicClips, sound => sound.name == name);
+        }
+        if (s == null)
+        {
+            Debug.LogWarning($"Sound {s.name} not found.");
+        }
+
+        s.source.Stop();
+//        Debug.Log($"Sound {name} could not be stopped, not playing.");
+    }
 
     void PlayBackgroundMusic()
     {
