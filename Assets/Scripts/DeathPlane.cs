@@ -12,7 +12,7 @@ public class DeathPlane : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Debug.Log("You fucking died");
-            other.gameObject.transform.position = respawnPoint.position;
+            other.gameObject.GetComponent<Transform>().position = respawnPoint.position;
         }
     }
 
