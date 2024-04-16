@@ -147,12 +147,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogTexts:
-  - Hejsa
-  - Dette er en test
-  - Virker det?
-  - 'Farvel
+  - Hey there!
+  - 'Did you know that you can interact with the trees you planted to read old messages? '
+  - 'Remember, the writing is for your own benefit so spelling mistakes won''t do
+    anything.
 
 '
+  - 'Also the prompts in the areas are only a guideline.
+
+    Feel free to write
+    about anything that you feel would help.'
+  audioManager: {fileID: 0}
 --- !u!136 &4974362151121834702
 CapsuleCollider:
   m_ObjectHideFlags: 0
