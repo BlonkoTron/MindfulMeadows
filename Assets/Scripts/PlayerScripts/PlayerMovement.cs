@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     #region movement values
     [Header("Movementstuff")]
     [SerializeField] private float maxSpeed = 6f;
+    [SerializeField] private float slowedSpeed = 4f;
     [SerializeField] private float jumpForce = 6f;
     [SerializeField] private float rotationSpeed = 500f;
     [SerializeField] private float jumpGracePeriod = 0.1f;
@@ -21,9 +22,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float currentSpeed;
     private float accelRate;
     private float decelRate;
+    private float speedSave;
 
     public bool isGrounded = false;
     public bool canMove = true;
+    
 
     #endregion
 
@@ -36,6 +39,9 @@ public class PlayerMovement : MonoBehaviour
     private float ySpeed;
     private float? lastGroundedTime = null;
     private float? lastJumpPress = null;
+
+    private bool inBadArea = false;
+    private Collider other;
 
     //private components
     private Rigidbody rb;
@@ -59,6 +65,8 @@ public class PlayerMovement : MonoBehaviour
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         cameraTransform = mainCamera.transform;
 
+        speedSave = maxSpeed;
+
         accelRate = maxSpeed / accelerationTimeToMax;
 
         decelRate = -maxSpeed / deccelerationTimeToZero;
@@ -68,7 +76,7 @@ public class PlayerMovement : MonoBehaviour
     
     void Update()
     {
-#region Calculating Movement
+    #region Calculating Movement
 
         if (movement != Vector3.zero)
         {   
@@ -106,7 +114,7 @@ public class PlayerMovement : MonoBehaviour
 
 #endregion
 
-#region Calculating Jump
+    #region Calculating Jump
 
         // using unity physics to change the speed of the velocity on the y axis.
 
@@ -122,7 +130,7 @@ public class PlayerMovement : MonoBehaviour
 
 #endregion
 
-#region Moving the Character
+    #region Moving the Character
 
 
         if (canMove)
@@ -130,11 +138,25 @@ public class PlayerMovement : MonoBehaviour
             // using the character controller component to move the character.
             controller.Move(velocity * Time.deltaTime);
         }
-        
 
-#endregion
+
+        #endregion
+
+    #region checking if bad area is gone
+
+        if (inBadArea && !other)
+        {
+            Debug.Log("Fast");
+
+            inBadArea = false;
+
+            maxSpeed = speedSave;
+        }
+        #endregion
 
     }
+
+    #region Input management
 
     void OnMovement(InputValue input)
     {   
@@ -170,5 +192,39 @@ public class PlayerMovement : MonoBehaviour
         }
 
     }
+
+    #endregion
+
+    #region Slow player in bad areas
+
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (collision.CompareTag("BadArea"))
+        {
+
+            Debug.Log("Ah shit u slow");
+
+            inBadArea = true;
+
+            other = collision;
+
+            maxSpeed = slowedSpeed;
+        }
+    }
+
+    private void OnTriggerExit(Collider collision)
+    {
+        if (collision.CompareTag("BadArea"))
+        {
+            Debug.Log("Fast");
+
+            inBadArea = false;
+
+            maxSpeed = speedSave;
+        }
+    }
+
+    #endregion
+
 
 }
