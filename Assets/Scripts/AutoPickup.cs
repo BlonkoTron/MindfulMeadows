@@ -26,8 +26,10 @@ public class AutoPickup : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, player.position, step);
             if (dist<pickupCollisionRange)
             {
+                FindObjectOfType<AudioManager>().Play("pickup", false);
                 Inventory.seeds++;
                 seedCounter.UpdateText();
+                
                 Destroy(this.gameObject);
             }
         }

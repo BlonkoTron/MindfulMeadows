@@ -53,4 +53,8 @@ MonoBehaviour:
     volume: 1
     clip: {fileID: 8300000, guid: f1e2e668733884f5b9645adef755de2c, type: 3}
     source: {fileID: 0}
-  sounds: []
+  sounds:
+  - name: pickup
+    volume: 1
+    clip: {fileID: 8300000, guid: 26cfd8f5b438542b6a7dd1c31ee8ad59, type: 3}
+    source: {fileID: 0}

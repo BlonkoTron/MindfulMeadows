@@ -11,7 +11,7 @@ public class AudioManager : MonoBehaviour
     public static AudioManager instance;
 
     private float timer;
-    private int nextCheckTime = 15;
+    private int nextCheckTime = 120;
     private int timerInterval = 15;
     private Sound currentBGMusic;
     //private bool musicIsPlaying = false;
@@ -46,7 +46,7 @@ public class AudioManager : MonoBehaviour
     {
         timer = 0f;
         Debug.Log("Playing start music...");
-        Play("music_active");
+        Play("music_active", true);
     }
 
     private void FixedUpdate()
@@ -66,32 +66,43 @@ public class AudioManager : MonoBehaviour
             else
             {
                 Debug.Log("Nothing playing, starting new clip...");
-                Play(musicClips[UnityEngine.Random.Range(0, musicClips.Length)]);
+                Play(musicClips[UnityEngine.Random.Range(0, musicClips.Length)], true);
             }
         }
     }
 
-    public void Play(string name)
+    public void Play(string name, bool isMusic)
     {
-        Sound s = Array.Find(musicClips, sound => sound.name == name);
+        Sound s = new();
+        if (isMusic)
+        {
+            s = Array.Find(musicClips, sound => sound.name == name);
+        }
+        else
+        {
+            s = Array.Find(sounds, sound => sound.name == name);
+        }
+
         if (s == null)
         {
             Debug.LogWarning($"Sound {name} not found.");
             return;
         }
-        currentBGMusic = s;
+        if (isMusic)
+            currentBGMusic = s;
         s.source.Play();
         Debug.Log($"Now playing {s.name}");
     }
 
-    public void Play(Sound s)
+    public void Play(Sound s, bool isMusic)
     {
         if (s.clip == null)
         {
             Debug.LogWarning($"Sound {s.name} not found.");
             return;
         }
-        currentBGMusic = s;
+        if (isMusic)
+            currentBGMusic = s;
         s.source.Play();
         Debug.Log($"Now playing {s.name}");
     }
@@ -107,7 +118,7 @@ public class AudioManager : MonoBehaviour
         {
             currentBGMusic = musicClips[UnityEngine.Random.Range(0, musicClips.Length)];
             Debug.Log($"Music clip selected: {currentBGMusic.name}; trying to play...");
-            Play(currentBGMusic);
+            Play(currentBGMusic, true);
         }
             
 
