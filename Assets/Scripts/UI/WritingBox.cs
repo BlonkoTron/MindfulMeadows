@@ -93,4 +93,8 @@ public class WritingBox : MonoBehaviour
     {
         WritingDataManager.myWriteData.Add(new WritingDataManager.WriteData(promptText.text, myText.Length, Time.time - openingTimer));
     }
+    private void ClearText()
+    {
+        myIputField.text = "";
+    }
 }
