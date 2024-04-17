@@ -41,6 +41,7 @@ public class BadArea : MonoBehaviour
     public void ClearArea()
     {
         Instantiate(deathParticle, transform.position, Quaternion.identity);
+        FindObjectOfType<AudioManager>().Play("badAreaWhoosh", false);
         Destroy(gameObject);
     }
 

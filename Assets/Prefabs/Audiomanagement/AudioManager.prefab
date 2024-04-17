@@ -191,3 +191,17 @@ MonoBehaviour:
     volume: 1
     clip: {fileID: 8300000, guid: b629a15c2c0464928a46856ec7ee8876, type: 3}
     source: {fileID: 0}
+  - name: badAreaWhoosh
+    volume: 1
+    clip: {fileID: 8300000, guid: 01c5e6382482547eaa7b38ae6fdb5cc2, type: 3}
+    source: {fileID: 0}
+  currentBGMusic:
+    name: 
+    volume: 0
+    clip: {fileID: 0}
+    source: {fileID: 0}
+  currentSFX:
+    name: 
+    volume: 0
+    clip: {fileID: 0}
+    source: {fileID: 0}
