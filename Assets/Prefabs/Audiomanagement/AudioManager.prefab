@@ -195,6 +195,10 @@ MonoBehaviour:
     volume: 1
     clip: {fileID: 8300000, guid: 01c5e6382482547eaa7b38ae6fdb5cc2, type: 3}
     source: {fileID: 0}
+  - name: secretvoice
+    volume: 1
+    clip: {fileID: 8300000, guid: 084bc42dfea5d4b4080ad58500f140fb, type: 3}
+    source: {fileID: 0}
   currentBGMusic:
     name: 
     volume: 0
