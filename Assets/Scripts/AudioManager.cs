@@ -12,10 +12,9 @@ public class AudioManager : MonoBehaviour
 
     private float timer;
     private int nextCheckTime = 120;
-    private int timerInterval = 30;
-    public Sound currentBGMusic;
-    public Sound currentSFX;
-    //private bool musicIsPlaying = false;
+    private readonly int timerInterval = 30;
+    private Sound currentBGMusic;
+
 
     private void Awake()
     {
@@ -80,7 +79,7 @@ public class AudioManager : MonoBehaviour
             s = Array.Find(musicClips, sound => sound.name == name);
             if (s == null)
             {
-                Debug.LogWarning($"Sound {name} not found.");
+                Debug.LogWarning($"Sound {name} not found, unable to play.");
                 return;
             }
             currentBGMusic = s;
@@ -90,10 +89,9 @@ public class AudioManager : MonoBehaviour
             s = Array.Find(sounds, sound => sound.name == name);
             if (s == null)
             {
-                Debug.LogWarning($"Sound {name} not found.");
+                Debug.LogWarning($"Sound {name} not found, unable to play.");
                 return;
             }
-            currentSFX = s;
         }
         s.source.Play();
         Debug.Log($"Now playing {s.name}");
@@ -103,13 +101,11 @@ public class AudioManager : MonoBehaviour
     {
         if (s.clip == null)
         {
-            Debug.LogWarning($"Sound {s.name} not found.");
+            Debug.LogWarning($"Sound {s.name} not found, unable to play.");
             return;
         }
         if (isMusic)
             currentBGMusic = s;
-        else
-            currentSFX = s;
 
         s.source.Play();
         Debug.Log($"Now playing {s.name}");
@@ -123,35 +119,11 @@ public class AudioManager : MonoBehaviour
             s = Array.Find(musicClips, sound => sound.name == name);
             if (s == null)
             {
-                Debug.LogWarning($"Sound {s.name} not found.");
+                Debug.LogWarning($"Sound {s.name} not found, unable to stop.");
             }
         }
 
         s.source.Stop();
-//        Debug.Log($"Sound {name} could not be stopped, not playing.");
     }
 
-    void PlayBackgroundMusic()
-    {
-        //Debug.Log("Trying to play BG music...");
-        //maybe add some fancy code that makes the appropriate theme play for
-        //different situations
-
-        if (currentBGMusic == null)
-        {
-            currentBGMusic = musicClips[UnityEngine.Random.Range(0, musicClips.Length)];
-            Debug.Log($"Music clip selected: {currentBGMusic.name}; trying to play...");
-            Play(currentBGMusic, true);
-        }
-            
-
-        if (currentBGMusic.source.isPlaying)
-            return;
-        else
-        {
-            Debug.Log("Clip ended, resetting");
-            timer = 0f;
-            currentBGMusic = null;
-        }
-    }
 }
