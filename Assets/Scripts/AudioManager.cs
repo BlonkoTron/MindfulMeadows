@@ -12,7 +12,7 @@ public class AudioManager : MonoBehaviour
 
     private float timer;
     private int nextCheckTime = 120;
-    private int timerInterval = 15;
+    private int timerInterval = 30;
     public Sound currentBGMusic;
     public Sound currentSFX;
     //private bool musicIsPlaying = false;
@@ -121,10 +121,10 @@ public class AudioManager : MonoBehaviour
         if (s == null)
         {
             s = Array.Find(musicClips, sound => sound.name == name);
-        }
-        if (s == null)
-        {
-            Debug.LogWarning($"Sound {s.name} not found.");
+            if (s == null)
+            {
+                Debug.LogWarning($"Sound {s.name} not found.");
+            }
         }
 
         s.source.Stop();
